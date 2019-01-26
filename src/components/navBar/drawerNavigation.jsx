@@ -72,7 +72,10 @@ class DrawerNavigation extends Component {
       >
         {route.label}
         <IconButton onClick={(event) => this.toggleMenu(event, route.value)}
-                    style={{width: '32px', height: '32px', zIndex: 1000, color, position: 'fixed', right: '5px'}}
+                    style={{
+                      width: '36px', height: '36px', zIndex: 1000, color,
+                      marginTop: '-5px', position: 'fixed', right: '4px'
+                    }}
         >
           {this.state[route.value] ? <ExpandLess /> : <ExpandMore />}
         </IconButton>
@@ -111,5 +114,5 @@ class DrawerNavigation extends Component {
 }
 
 export default withStyles({
-  paper: {backgroundColor: config.secondary.dark}
+  paper: {backgroundColor: config.secondary.dark, minWidth: '200px'}
 })(DrawerNavigation);

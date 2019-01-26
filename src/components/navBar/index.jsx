@@ -28,6 +28,9 @@ const routes = [{
   label: 'Resume',
   value: '/resume',
 }, {
+  label: 'Blog',
+  value: '/blog',
+}, {
   label: 'Contact',
   value: '/contact',
 }];
