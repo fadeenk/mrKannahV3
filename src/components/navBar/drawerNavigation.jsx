@@ -8,6 +8,9 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import { withStyles } from '@material-ui/core/styles';
+
+import config from '../../../data/SiteConfig'
 
 class DrawerNavigation extends Component {
   constructor(props) {
@@ -43,8 +46,8 @@ class DrawerNavigation extends Component {
 
   getMenuItemForRoute = (route, nested) => {
     const color = route.value.toLowerCase() === this.props.location.pathname ?
-      'grey' :
-      'black';
+      config.primary.light :
+      'white';
     return (
       <MenuItem key={route.value} value={route.value}
                 style={{color}}
@@ -60,8 +63,8 @@ class DrawerNavigation extends Component {
       return this.getMenuItemForRoute(subRoute, true);
     });
     const color = route.value.toLowerCase() === this.props.location.pathname ?
-      'grey' :
-      'black';
+      config.primary.light :
+      'white';
     const mainRoute =
       <MenuItem key={route.value} value={route.value}
                 style={{color, marginRight: '40px'}}
@@ -93,9 +96,10 @@ class DrawerNavigation extends Component {
     return (
       <div style={{textAlign: 'right'}} className='mobile'>
         <IconButton onClick={this.toggleDrawer}>
-          <MenuIcon style={{color: 'yellow', opacity: 0.7}}/>
+          <MenuIcon style={{color: config.primary.main}}/>
         </IconButton>
         <Drawer open={this.state.openDrawer} anchor="right"
+                classes={{paper: this.props.classes.paper}}
                 onClose={this.toggleDrawer} style={{textAlign: 'left'}}>
           <List>
             {items}
@@ -106,4 +110,6 @@ class DrawerNavigation extends Component {
   }
 }
 
-export default DrawerNavigation;
+export default withStyles({
+  paper: {backgroundColor: config.secondary.dark}
+})(DrawerNavigation);

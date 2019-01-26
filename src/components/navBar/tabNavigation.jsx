@@ -4,6 +4,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import DropDownMenu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { withStyles } from '@material-ui/core/styles';
+import config from "../../../data/SiteConfig";
 
 class TabNavigation extends Component {
   constructor(props) {
@@ -37,7 +39,7 @@ class TabNavigation extends Component {
   generateDropdown(route, currentRoute) {
     let routes = [route, ...route.nested].map((route) => {
       const color = route.value.toLowerCase() === currentRoute ?
-        'grey' :
+        config.primary.main :
         'black';
       return (
         <MenuItem key={route.value} value={route.value} style={{color}} onClick={(event) => {
@@ -67,6 +69,7 @@ class TabNavigation extends Component {
         return (
           <Tab key={route.value} value={route.value}
                label={route.label}
+               classes={{label: this.props.classes.label}}
                onClick={() => navigate(route.value)}
           />
         )
@@ -76,6 +79,7 @@ class TabNavigation extends Component {
       return (
         <Tab key={route.value} value={route.value}
              onClick={(event) => this.openDropdownMenu(event, route.value)}
+             classes={{label: this.props.classes.label}}
              label={
                 <div>
                   <span style={{fontSize: '14px'}}>{label}</span>
@@ -87,7 +91,9 @@ class TabNavigation extends Component {
     });
     return (
       <Tabs value={this.getParentRouteValue()} centered variant="fullWidth" className='desktop'
-            onChange={(event, value) => this.openDropdownMenu(value)}>
+            onChange={(event, value) => this.openDropdownMenu(value)}
+            classes={{indicator: this.props.classes.indicator}}
+      >
         {tabs}
       </Tabs>
     )
@@ -95,4 +101,7 @@ class TabNavigation extends Component {
 }
 
 
-export default TabNavigation;
+export default withStyles({
+  indicator: {backgroundColor: config.primary.light},
+  label: {color: 'white'}
+})(TabNavigation);

@@ -12,7 +12,7 @@ class Index extends React.Component {
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <Layout>
-        <NavBar location={this.props.location} />
+        <NavBar style={{background: config.secondary.dark}} location={this.props.location} />
         <div className="index-container">
           <Helmet title={config.siteTitle} />
           <SEO />
