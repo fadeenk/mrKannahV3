@@ -4,6 +4,7 @@ import { graphql } from "gatsby";
 import Layout from "../layout";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
+import NavBar from "../components/navBar";
 import config from "../../data/SiteConfig";
 
 class Index extends React.Component {
@@ -11,6 +12,7 @@ class Index extends React.Component {
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <Layout>
+        <NavBar location={this.props.location} />
         <div className="index-container">
           <Helmet title={config.siteTitle} />
           <SEO />
