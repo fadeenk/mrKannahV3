@@ -91,7 +91,7 @@ class DrawerNavigation extends Component {
       return this.getMenuItemsForRouteWithNested(route);
     });
     return (
-      <div style={{textAlign: 'right'}}>
+      <div style={{textAlign: 'right'}} className='mobile'>
         <IconButton onClick={this.toggleDrawer}>
           <MenuIcon style={{color: 'yellow', opacity: 0.7}}/>
         </IconButton>

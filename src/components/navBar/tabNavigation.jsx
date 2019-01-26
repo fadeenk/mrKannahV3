@@ -86,7 +86,7 @@ class TabNavigation extends Component {
       )
     });
     return (
-      <Tabs value={this.getParentRouteValue()} centered variant="fullWidth"
+      <Tabs value={this.getParentRouteValue()} centered variant="fullWidth" className='desktop'
             onChange={(event, value) => this.openDropdownMenu(value)}>
         {tabs}
       </Tabs>

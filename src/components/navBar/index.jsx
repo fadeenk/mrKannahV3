@@ -3,7 +3,6 @@ import {Link} from 'gatsby';
 import logo from '../../../static/logos/logo-48.png';
 import TabNavigation from './tabNavigation';
 import DrawerNavigation from './drawerNavigation';
-import Responsive from 'react-responsive-decorator';
 
 
 const logoSize = {
@@ -33,35 +32,13 @@ const routes = [{
 }];
 
 class NavBar extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isMobile: false
-    }
-  }
-
-  componentDidMount() {
-    this.props.media({ minWidth: 768 }, () => {
-      this.setState({
-        isMobile: false
-      });
-    });
-    this.props.media({ maxWidth: 768 }, () => {
-      this.setState({
-        isMobile: true
-      });
-    });
-  }
-
   render() {
     return (
       <div id="navbar" style={{background: 'green'}}>
         <div style={{maxWidth: '800px', margin: '0 auto'}}>
           <Link to="/"><img className="App-logo" src={logo} alt="logo" style={{height: logoSize.height, float: 'left'}}/></Link>
-          {this.state.isMobile ?
-            <DrawerNavigation routes={routes} location={this.props.location} /> :
-            <TabNavigation routes={routes} location={this.props.location} />
-          }
+          <DrawerNavigation routes={routes} location={this.props.location} />
+          <TabNavigation routes={routes} location={this.props.location} />
         </div>
       </div>
     )
@@ -69,4 +46,4 @@ class NavBar extends Component {
 }
 
 
-export default Responsive(NavBar);
+export default NavBar;
