@@ -36,6 +36,7 @@
     "react-helmet": "^5.2.0",
     "react-particles-js": "^2.4.2",
     "react-share": "^2.4.0",
+    "react-swipeable-views": "^0.13.1",
     "react-twitter-widgets": "^1.7.1",
     "react-typist": "^2.0.5",
     "url-join": "^4.0.0"

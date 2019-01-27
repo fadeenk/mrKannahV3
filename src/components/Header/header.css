@@ -21,14 +21,6 @@
     .header div {
         font-size: 20px;
     }
-
-    .desktop {
-        display: none;
-    }
-
-    .mobile {
-        display: block;
-    }
 }
 
 /* Desktop view */
@@ -53,14 +45,6 @@
 
     .header div {
         font-size: 26px;
-    }
-
-    .desktop {
-        display: block;
-    }
-
-    .mobile {
-        display: none;
     }
 }
 

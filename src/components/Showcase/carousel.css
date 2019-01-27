@@ -1,0 +1,41 @@
+/* Mobile */
+@media only screen and (max-width: 600px) {
+    #carousel {
+        width: 100%;
+    }
+
+    #arrows {
+        opacity: 0;
+    }
+
+    .fab {
+        width: 0;
+        height: 0;
+    }
+
+    .arrow {
+        width: 0;
+        height: 0;
+    }
+}
+
+/* Desktop */
+@media only screen and (min-width: 600px) {
+    #carousel {
+        width: 80%;
+    }
+
+    #arrows {
+        opacity: 1;
+    }
+
+    .fab {
+        width: 48px;
+        height: 48px;
+    }
+
+    .arrow {
+        width: 24px;
+        height: 24px;
+    }
+}

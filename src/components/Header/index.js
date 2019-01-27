@@ -9,7 +9,7 @@ class Header extends Component {
 
   render() {
     return (
-    <div className='transition header' style={{  backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light})`
+    <div className='transition header' style={{backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light})`
         , color: 'white'}}>
         <div className='transition header' style={{display: 'table', width: '80vw', maxWidth: '600px', margin: '0 auto'}}>
           <ParticlesBackground style={{position: 'absolute', left: 0}} />

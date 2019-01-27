@@ -7,6 +7,7 @@ import Layout from "../layout";
 import SEO from "../components/SEO/SEO";
 import NavBar from "../components/navBar";
 import Header from "../components/Header";
+import Showcase from "../components/Showcase";
 import config from "../../data/SiteConfig";
 
 class Index extends React.Component {
@@ -53,6 +54,9 @@ class Index extends React.Component {
               <p>Something else? Just ask! I do offer some daily, weekly and monthly retainer rates.</p>
             </CardContent>
           </Card>
+        </div>
+        <div style={{backgroundImage: `linear-gradient(${config.primary.light}, ${config.secondary.dark}`}}>
+          <Showcase />
         </div>
       </Layout>
     );
