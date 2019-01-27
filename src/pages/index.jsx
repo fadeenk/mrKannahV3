@@ -5,6 +5,7 @@ import Layout from "../layout";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
 import NavBar from "../components/navBar";
+import Header from "../components/Header";
 import config from "../../data/SiteConfig";
 
 class Index extends React.Component {
@@ -13,6 +14,7 @@ class Index extends React.Component {
     return (
       <Layout>
         <NavBar style={{background: config.secondary.dark}} location={this.props.location} />
+        <Header />
         <div className="index-container">
           <Helmet title={config.siteTitle} />
           <SEO />
