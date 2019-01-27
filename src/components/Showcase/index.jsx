@@ -46,9 +46,9 @@ class Showcase extends Component {
   }
 
   render() {
-    const slide = document.getElementById(`slide${this.state.index}`);
+    const slide = typeof document !== "undefined" ? document.getElementById(`slide${this.state.index}`): null;
     // the number is the height of the first slide this is a hack till later
-    const slideHeight= slide ? slide.clientHeight : 223;
+    const slideHeight= slide ? slide.clientHeight : 277;
     return (
       <div id="showcase" style={{padding: '10px 0', overflow: 'hidden'}}>
         <div id='container' style={{maxWidth: '800px', width: '90%', margin: '0 auto'}}>

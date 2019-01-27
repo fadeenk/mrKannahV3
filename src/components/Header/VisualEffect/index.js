@@ -5,10 +5,17 @@ import siteConfig from "../../../../data/SiteConfig";
 
 
 class ParticlesBackground extends React.Component {
-  componentWillMount() {
-    this.setState({initialRender: true});
+  constructor(props) {
+    super(props);
+    this.state = {
+      initialRender: true
+    };
+  }
+
+  componentDidMount() {
     this.handleResize();
-    window.addEventListener('resize', this.handleResize, false);
+      this.setState({initialRender: false});
+      window.addEventListener('resize', this.handleResize, false);
   }
 
   componentWillUnmount() {
@@ -36,10 +43,6 @@ class ParticlesBackground extends React.Component {
     return (
       <div className='header' style={{width: '100%'}}></div>
     )
-  }
-
-  componentDidMount() {
-    this.setState({initialRender: false});
   }
 
 }

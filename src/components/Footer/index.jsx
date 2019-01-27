@@ -25,7 +25,7 @@ class Footer extends Component {
 
   getLinkElements() {
     return userLinks.map(link => (
-      <a href={link.url}>
+      <a href={link.url} key={link.label}>
         <IconButton>{link.icon}</IconButton>
       </a>
     ));

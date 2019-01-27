@@ -5,8 +5,12 @@ import "./pdfViewer.css";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 class PDFViewer extends React.Component {
-  componentWillMount() {
-    this.setState({initialRender: true});
+  constructor(props) {
+    super(props);
+    this.state = {width: 800};
+  }
+
+  componentDidMount() {
     this.handleResize();
     window.addEventListener('resize', this.handleResize, false);
   }
