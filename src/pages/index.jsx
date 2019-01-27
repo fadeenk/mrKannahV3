@@ -8,6 +8,7 @@ import SEO from "../components/SEO/SEO";
 import NavBar from "../components/navBar";
 import Header from "../components/Header";
 import Showcase from "../components/Showcase";
+import Footer from "../components/Footer";
 import config from "../../data/SiteConfig";
 
 class Index extends React.Component {
@@ -58,6 +59,7 @@ class Index extends React.Component {
         <div style={{backgroundImage: `linear-gradient(${config.primary.light}, ${config.secondary.dark}`}}>
           <Showcase />
         </div>
+        <Footer />
       </Layout>
     );
   }
