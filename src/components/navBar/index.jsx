@@ -16,7 +16,7 @@ const routes = [{
   value: '/',
 }, {
   label: 'About',
-  value: '/about',
+  value: '/about/',
   nested: [{
     label: 'Software Development',
     value: '/about/softwareDevelopment',

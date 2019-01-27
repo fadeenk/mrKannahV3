@@ -45,7 +45,7 @@ class DrawerNavigation extends Component {
   }
 
   getMenuItemForRoute = (route, nested) => {
-    const color = route.value.toLowerCase() === this.props.location.pathname ?
+    const color = route.value.toLowerCase() === this.props.location.pathname.toLowerCase() ?
       config.primary.light :
       'white';
     return (

@@ -5,6 +5,7 @@ import Layout from "../layout";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
 import NavBar from "../components/navBar";
+import Footer from "../components/Footer";
 import config from "../../data/SiteConfig";
 
 class Index extends React.Component {
@@ -18,6 +19,7 @@ class Index extends React.Component {
           <SEO />
           <PostListing postEdges={postEdges} />
         </div>
+        <Footer />
       </Layout>
     );
   }
