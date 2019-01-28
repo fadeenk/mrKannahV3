@@ -6,6 +6,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.1",
     "@material-ui/icons": "^3.0.2",
+    "axios": "^0.18.0",
     "gatsby": "2.0.91",
     "gatsby-image": "2.0.26",
     "gatsby-plugin-catch-links": "2.0.9",
