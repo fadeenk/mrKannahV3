@@ -14,9 +14,9 @@ class Index extends React.Component {
     return (
       <Layout>
         <Helmet title={config.siteTitle} />
+        <SEO />
         <NavBar style={{background: config.secondary.dark}} location={this.props.location} />
-        <div className="index-container">
-          <SEO />
+        <div style={{ textAlign: 'left', backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light} 40%, ${config.primary.light} 60%, ${config.secondary.dark})`, padding: '1em 0' }}>
           <PostListing postEdges={postEdges} />
         </div>
         <Footer />
