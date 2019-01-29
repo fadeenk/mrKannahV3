@@ -1,6 +1,8 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 import Layout from "../layout";
 import UserInfo from "../components/UserInfo/UserInfo";
 import Disqus from "../components/Disqus/Disqus";
@@ -10,6 +12,8 @@ import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 import "./b16-tomorrow-dark.css";
 import "./post.css";
+import NavBar from "../components/navBar";
+import Footer from "../components/Footer";
 
 export default class PostTemplate extends React.Component {
   render() {
@@ -29,16 +33,22 @@ export default class PostTemplate extends React.Component {
             <title>{`${post.title} | ${config.siteTitle}`}</title>
           </Helmet>
           <SEO postPath={slug} postNode={postNode} postSEO />
-          <div>
-            <h1>{post.title}</h1>
-            <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
-            <div className="post-meta">
-              <PostTags tags={post.tags} />
-              <SocialLinks postPath={slug} postNode={postNode} />
-            </div>
-            <UserInfo config={config} />
-            <Disqus postNode={postNode} />
+          <NavBar style={{background: config.secondary.dark}} location={this.props.location} />
+          <div style={{ textAlign: 'left', backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light} 40%, ${config.primary.light} 60%, ${config.secondary.dark})`, padding: '1em 0' }}>
+            <Card style={{width: '90%', margin: '10px auto', maxWidth: '800px'}}>
+              <CardContent>
+                <h1>{post.title}</h1>
+                <div style={{marginLeft: '5px'}} dangerouslySetInnerHTML={{ __html: postNode.html }} />
+                <div className="post-meta">
+                  <PostTags tags={post.tags} />
+                  <SocialLinks postPath={slug} postNode={postNode} />
+                </div>
+                <UserInfo config={config} />
+                <Disqus postNode={postNode} />
+              </CardContent>
+            </Card>
           </div>
+          <Footer />
         </div>
       </Layout>
     );
