@@ -48,7 +48,7 @@ class PostListing extends React.Component {
     if (!Array.isArray(post.tags)) return null;
     return (
       post.tags.map((tag, i) => {
-        return (<Link to={`/tags/${kebabCase(tag)}`} key={i} style={{textDecoration: 'none'}}><Chip label={tag} clickable="true" className={this.props.classes.chip}/></Link>)
+        return (<Link to={`/tags/${kebabCase(tag)}`} key={i} style={{textDecoration: 'none'}}><Chip label={`#${tag}`} clickable="true" className={this.props.classes.chip}/></Link>)
       })
     )
   }
@@ -69,7 +69,7 @@ class PostListing extends React.Component {
           {
             postList.map((post, i) => (
               <div key={i}>
-                <img src={post.cover} width='40%' style={{float: 'left', marginRight: '10px', marginBottom: '10px', borderRadius: '4px'}} />
+                <img src={post.cover} width='40%' style={{float: 'left', marginRight: '10px', borderRadius: '4px'}} />
                 <h2 style={{
                   textShadow: '0 12px 30px rgba(0, 0, 0, 0.15)',
                   fontSize: '2rem',
@@ -80,9 +80,9 @@ class PostListing extends React.Component {
                   <Link to={post.path} className={this.props.classes.link}>{post.title}</Link>
                 </h2>
                 {post.date} &mdash; {post.timeToRead} Min Read &mdash; In <Link to={`/categories/${kebabCase(post.category)}`} className={this.props.classes.link}>{post.category}</Link><br/>
-                {post.excerpt}<br/>
-                {this.getTags(post)}<br/>
-                {i < postList.length -1 ? <Divider style={{clear: 'both', margin: '10px 0'}}/> : null}
+                {post.excerpt} {post.tags ? (<br/>) : null} {this.getTags(post)}
+                <br style={{clear: 'both'}} />
+                {i < postList.length -1 ? <Divider style={{margin: '20px 0'}}/> : null}
               </div>
           ))}
           </CardContent>
