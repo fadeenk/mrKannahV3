@@ -31,19 +31,19 @@ class Index extends React.Component {
             <CardHeader title="About Me"/>
             <CardContent>
               <p>I currently am the Chief Technology Officer at <a href="https://coursekeyeducation.com/" rel="noopener noreferrer" target="_blank">CourseKey Education</a>, which is where my passion for technology, learning,
-                and entrepreneurship converge. Additionally, I am the owner of Kannah Consulting and Software Services (licensed in city of El Cajon) which allows me to work with different companies and startups.</p>
-              <p>I studied computer engineering and science at San Diego State University, where I co-founded student software development
+                and entrepreneurship converge. Additionally, I am the owner of Kannah Consulting and Software Services (licensed in city of El Cajon), which allows me to work with different companies and startups.</p>
+              <p>I studied computer engineering and science at San Diego State University, where I co-founded a student software development
                 firm called <a target="_blank" rel="noopener noreferrer" href="http://hitechedventures.org/">HiTech EdVentures (HTEV)</a>.
                 Over the years, I developed software and consulted for multiple industries, including Healthcare, Home
                 Services, Entertainment, Automobile, and Education.</p>
-              <p>Currently I am accepting freelance work, I'd love to get coffee and get to know you, so don’t hesitate
+              <p>Currently, I am accepting freelance work. I'd love to get coffee and get to know you, so don’t hesitate
                 to get in touch.</p>
             </CardContent>
           </Card>
           <Card style={{...cardStyles, marginTop: '20px'}}>
             <CardHeader title="Consulting Services"/>
             <CardContent>
-              <p>I do offer consulting services for:</p>
+              <p>I offer consulting services for:</p>
               <ul>
                 <li>Software architecture / design consultations</li>
                 <li>Team coaching</li>
