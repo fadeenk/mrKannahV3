@@ -38,7 +38,7 @@ const AboutNavBar = ({ page, pages, classes, path }) => (
           value={path}
           centered variant="fullWidth"
       >
-        {pages.map(node =>
+        {pages.sort((a, b) => a.route - b.route).map(node =>
           <Tab key={node.route} label={node.title} value={node.route}
                style = {{backgroundColor: config.primary.main}} />
         )}

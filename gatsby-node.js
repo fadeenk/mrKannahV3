@@ -200,7 +200,7 @@ exports.createPages = ({ graphql, actions }) => {
     const pages = result.data.allMarkdownRemark.edges.map(edge => ({
       route: edge.node.frontmatter.route,
       title: edge.node.frontmatter.title,
-    })).sort((a, b) => a.route - b.route);
+    }));
     pages.forEach((page) => {
       createPage({
         path: page.route,
