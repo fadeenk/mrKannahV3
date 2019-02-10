@@ -184,6 +184,7 @@ exports.createPages = ({ graphql, actions }) => {
             node {
               frontmatter {
                 route
+                title
               }
             }
           }
@@ -196,13 +197,19 @@ exports.createPages = ({ graphql, actions }) => {
       throw result.errors;
     }
     const aboutPage = path.resolve("src/templates/about.jsx");
-
-    result.data.allMarkdownRemark.edges.forEach(edge => {
+    const pages = result.data.allMarkdownRemark.edges.map(edge => ({
+      route: edge.node.frontmatter.route,
+      title: edge.node.frontmatter.title,
+    })).sort((a, b) => a.route - b.route);
+    pages.forEach((page) => {
       createPage({
-        path: edge.node.frontmatter.route,
+        path: page.route,
         component: aboutPage,
+        context: {
+          route: page.route,
+          pages,
+        }
       });
-    });
-
+    })
   }));
 };

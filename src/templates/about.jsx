@@ -25,9 +25,7 @@ const cardStyle = {
   maxWidth: '790px',
 };
 
-let nodeIndex = null;
-
-const AboutNavBar = ({ data, classes, path }) => (
+const AboutNavBar = ({ page, pages, classes, path }) => (
   <div id="about" style={{padding: '10px'}}>
     <Card style={cardStyle}>
       <Tabs style={{
@@ -40,13 +38,13 @@ const AboutNavBar = ({ data, classes, path }) => (
           value={path}
           centered variant="fullWidth"
       >
-        {data.allMarkdownRemark.edges.map(({node}, i) => {
-          if (path === node.frontmatter.route)  nodeIndex = i;
-          return (<Tab key={i} label={node.frontmatter.title} value={node.frontmatter.route} style = {{backgroundColor: config.primary.main}} />)
-        })}
+        {pages.map(node =>
+          <Tab key={node.route} label={node.title} value={node.route}
+               style = {{backgroundColor: config.primary.main}} />
+        )}
       </Tabs>
       <CardContent>
-        <div dangerouslySetInnerHTML={{ __html: data.allMarkdownRemark.edges[nodeIndex].node.html }} />
+        <div dangerouslySetInnerHTML={{ __html: page.html }} />
       </CardContent>
     </Card>
   </div>
@@ -57,36 +55,16 @@ class About extends Component {
 
   render() {
     const path = this.props.location.pathname;
+    const pages = this.props.pageContext.pages;
+    const page = this.props.data.markdownRemark;
+
     return (
       <Layout>
         <Helmet title={`About | ${config.siteTitle}`} />
         <SEO />
         <NavBar style={{background: config.secondary.dark}} location={this.props.location} />
         <div style={{backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light} 40%, ${config.primary.light} 60%, ${config.secondary.dark})`}}>
-          <StaticQuery
-            query={graphql`
-              query AboutQuery {
-                allMarkdownRemark(
-                  sort: {
-                    fields: [frontmatter___route]
-                    order: ASC
-                  }
-                  filter: { fileAbsolutePath: {regex:"/about/"} }
-                ) {
-                  edges {
-                    node {
-                      html
-                      frontmatter {
-                        route
-                        title
-                      }
-                    }
-                  }
-                }
-              }
-            `}
-            render={data => <AboutNavBar data={data} classes={this.props.classes} path={path} />}
-          />
+          <AboutNavBar page={page} pages={pages} classes={this.props.classes} path={path} />
         </div>
         <Footer />
       </Layout>
@@ -95,3 +73,16 @@ class About extends Component {
 }
 
 export default withStyles(styles)(About);
+
+/* eslint no-undef: "off" */
+export const pageQuery = graphql`
+  query AboutPage($route: String!) {
+    markdownRemark (frontmatter: {route: {eq: $route}}) {
+      html
+      frontmatter {
+        route
+        title
+      }
+    }
+  }
+`;
