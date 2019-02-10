@@ -33,6 +33,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       limit: 2000
       sort: { fields: [fields___date], order: DESC }
+      filter: { fileAbsolutePath: {regex:"/content/"} }
     ) {
       edges {
         node {
