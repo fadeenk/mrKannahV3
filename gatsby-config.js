@@ -88,19 +88,19 @@ module.exports = {
         display: "minimal-ui",
         icons: [
           {
-            src: "/logos/logo-192x192.png",
-            sizes: "192x192",
+            src: "/logos/logo-48.png",
+            sizes: "48x48",
             type: "image/png"
           },
           {
-            src: "/logos/logo-512x512.png",
+            src: "/logos/logo-1024.png",
             sizes: "512x512",
             type: "image/png"
           }
         ]
       }
     },
-    "gatsby-plugin-offline",
+    "gatsby-plugin-remove-serviceworker",
     {
       resolve: "gatsby-plugin-feed",
       options: {
