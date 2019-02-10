@@ -174,5 +174,35 @@ exports.createPages = ({ graphql, actions }) => {
         });
       })
     );
-  });
+  }).then(() => graphql(
+    `
+      {
+        allMarkdownRemark (
+          filter: { fileAbsolutePath: {regex:"/about/"} }
+        ) {
+          edges {
+            node {
+              frontmatter {
+                route
+              }
+            }
+          }
+        }
+      }
+    `
+  ).then((result) => {
+    if (result.errors) {
+      console.log(result.errors);
+      throw result.errors;
+    }
+    const aboutPage = path.resolve("src/templates/about.jsx");
+
+    result.data.allMarkdownRemark.edges.forEach(edge => {
+      createPage({
+        path: edge.node.frontmatter.route,
+        component: aboutPage,
+      });
+    });
+
+  }));
 };

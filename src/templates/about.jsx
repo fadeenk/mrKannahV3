@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import Helmet from "react-helmet";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { withStyles } from '@material-ui/core/styles';
 import {navigate, graphql, StaticQuery} from "gatsby";
-import config from "../../../data/SiteConfig";
+import config from "../../data/SiteConfig";
+import SEO from "../components/SEO/SEO";
+import NavBar from "../components/navBar";
+import Footer from "../components/Footer";
+import Layout from "../layout";
 
 const styles = () => ({
   indicator: {
@@ -22,7 +27,7 @@ const cardStyle = {
 
 let nodeIndex = null;
 
-const NavBar = ({ data, classes, path }) => (
+const AboutNavBar = ({ data, classes, path }) => (
   <div id="about" style={{padding: '10px'}}>
     <Card style={cardStyle}>
       <Tabs style={{
@@ -53,26 +58,38 @@ class About extends Component {
   render() {
     const path = this.props.location.pathname;
     return (
-      <StaticQuery
-        query={graphql`
-          query AboutQuery {
-            allMarkdownRemark(
-              filter: { fileAbsolutePath: {regex:"/about/"} }
-            ) {
-              edges {
-                node {
-                  html
-                  frontmatter {
-                    route
-                    title
+      <Layout>
+        <Helmet title={`About | ${config.siteTitle}`} />
+        <SEO />
+        <NavBar style={{background: config.secondary.dark}} location={this.props.location} />
+        <div style={{backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light} 40%, ${config.primary.light} 60%, ${config.secondary.dark})`}}>
+          <StaticQuery
+            query={graphql`
+              query AboutQuery {
+                allMarkdownRemark(
+                  sort: {
+                    fields: [frontmatter___route]
+                    order: ASC
+                  }
+                  filter: { fileAbsolutePath: {regex:"/about/"} }
+                ) {
+                  edges {
+                    node {
+                      html
+                      frontmatter {
+                        route
+                        title
+                      }
+                    }
                   }
                 }
               }
-            }
-          }
-        `}
-        render={data => <NavBar data={data} classes={this.props.classes} path={path} />}
-      />
+            `}
+            render={data => <AboutNavBar data={data} classes={this.props.classes} path={path} />}
+          />
+        </div>
+        <Footer />
+      </Layout>
     )
   }
 }
