@@ -47,7 +47,10 @@ export const pageQuery = graphql`
             category
             title
             tags
-            cover
+            coverURL
+            cover {
+              publicURL
+            }
             date
           }
         }
