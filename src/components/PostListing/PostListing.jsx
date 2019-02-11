@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "gatsby";
 import {withStyles} from "@material-ui/core/styles"
 import Card from '@material-ui/core/Card';
-import Chip from '@material-ui/core/Chip';
 import CardContent from '@material-ui/core/CardContent';
 import Divider from '@material-ui/core/Divider';
 import {kebabCase} from 'lodash';
+import PostTags from '../PostTags/PostTags';
 import config from '../../../data/SiteConfig';
 
 const styles = {
@@ -15,14 +15,6 @@ const styles = {
     '&:hover': {
       color: config.primary.main,
       textDecoration: 'none',
-    },
-  },
-  chip: {
-    margin: '2px',
-    background: config.primary.light,
-    '&:hover': {
-      background: config.primary.dark,
-      color: 'white',
     },
   }
 };
@@ -44,14 +36,6 @@ class PostListing extends React.Component {
     });
     return postList;
   }
-  getTags(post) {
-    if (!Array.isArray(post.tags)) return null;
-    return (
-      post.tags.map((tag, i) => {
-        return (<Link to={`/tags/${kebabCase(tag)}`} key={i} style={{textDecoration: 'none'}}><Chip label={`#${tag}`} clickable="true" className={this.props.classes.chip}/></Link>)
-      })
-    )
-  }
 
   render() {
     const postList = this.getPostList(this.props.postEdges);
@@ -69,18 +53,20 @@ class PostListing extends React.Component {
           {
             postList.map((post, i) => (
               <div key={i}>
-                <img src={post.cover} width='40%' style={{float: 'left', marginRight: '10px', borderRadius: '4px'}} />
-                <h2 style={{
-                  textShadow: '0 12px 30px rgba(0, 0, 0, 0.15)',
-                  fontSize: '2rem',
-                  lineHeight: '2rem',
-                  marginBottom: '0.75rem',
-                  marginTop: '0.75rem'
-                }}>
-                  <Link to={post.path} className={this.props.classes.link}>{post.title}</Link>
-                </h2>
+                <Link to={post.path} className={this.props.classes.link}>
+                  <img src={post.cover} width='40%' style={{float: 'left', marginRight: '10px', borderRadius: '4px'}} />
+                  <h2 style={{
+                    textShadow: '0 12px 30px rgba(0, 0, 0, 0.15)',
+                    fontSize: '2rem',
+                    lineHeight: '2rem',
+                    marginBottom: '0.75rem',
+                    marginTop: '0.75rem'
+                  }}>
+                    {post.title}
+                  </h2>
+                </Link>
                 {post.date} &mdash; {post.timeToRead} Min Read &mdash; In <Link to={`/categories/${kebabCase(post.category)}`} className={this.props.classes.link}>{post.category}</Link><br/>
-                {post.excerpt} {post.tags ? (<br/>) : null} {this.getTags(post)}
+                {post.excerpt} {post.tags ? (<br/>) : null} <PostTags tags={post.tags} />
                 <br style={{clear: 'both'}} />
                 {i < postList.length -1 ? <Divider style={{margin: '20px 0'}}/> : null}
               </div>

@@ -4,7 +4,6 @@ import { graphql } from "gatsby";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Layout from "../layout";
-import UserInfo from "../components/UserInfo/UserInfo";
 import Disqus from "../components/Disqus/Disqus";
 import PostTags from "../components/PostTags/PostTags";
 import SocialLinks from "../components/SocialLinks/SocialLinks";
@@ -39,11 +38,10 @@ export default class PostTemplate extends React.Component {
               <CardContent>
                 <h1>{post.title}</h1>
                 <div style={{marginLeft: '5px'}} dangerouslySetInnerHTML={{ __html: postNode.html }} />
+                <PostTags tags={post.tags} />
                 <div className="post-meta">
-                  <PostTags tags={post.tags} />
                   <SocialLinks postPath={slug} postNode={postNode} />
                 </div>
-                <UserInfo config={config} />
                 <Disqus postNode={postNode} />
               </CardContent>
             </Card>
