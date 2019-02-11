@@ -179,6 +179,10 @@ exports.createPages = ({ graphql, actions }) => {
       {
         allMarkdownRemark (
           filter: { fileAbsolutePath: {regex:"/about/"} }
+          sort: {
+            fields: [frontmatter___route]
+            order: ASC
+          }
         ) {
           edges {
             node {
