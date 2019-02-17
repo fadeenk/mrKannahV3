@@ -28,6 +28,16 @@ module.exports = {
       }
     },
     {
+      resolve: "gatsby-plugin-sentry",
+      options: {
+        dsn: "https://0bfb726366f144d681a2b3631c7f791d@sentry.io/233818",
+        // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
+        environment: process.env.NODE_ENV,
+        autoBreadcrumbs: true,
+        enabled: (() => ["production", "stage"].indexOf(process.env.NODE_ENV) !== -1)()
+      }
+    },
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "posts",

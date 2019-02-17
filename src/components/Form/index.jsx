@@ -178,7 +178,7 @@ class Form extends Component {
           }
         }).catch(function (error) {
           console.log(error);
-          window.Raven.captureException(error, { submittionData: self.formData});
+          Sentry.captureException(error, { submittionData: self.formData});
           self.setState({ submitting: false, submitted: true})
         });
       });
