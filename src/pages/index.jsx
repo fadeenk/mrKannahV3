@@ -1,5 +1,4 @@
 import React from "react";
-import Helmet from "react-helmet";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -19,11 +18,14 @@ class Index extends React.Component {
       lineHeight: '1.5em',
       maxWidth: '800px',
     };
-
+    const pageSEO = {
+      title: config.siteTitle,
+      description: config.siteDescription,
+      image: config.siteLogo,
+    };
     return (
       <Layout>
-        <Helmet title={config.siteTitle} />
-        <SEO />
+        <SEO url={this.props.location.href} pageSEO={pageSEO} />
         <NavBar style={{background: config.secondary.dark}} location={this.props.location} />
         <Header />
         <div id="about" style={{padding: '10px 0', backgroundColor: config.primary.light}}>

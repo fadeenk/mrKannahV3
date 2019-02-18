@@ -5,10 +5,8 @@ import config from "../../../data/SiteConfig";
 
 class SEO extends Component {
   render() {
-    const { postNode, postPath, postSEO } = this.props;
-    let title;
-    let description;
-    let image;
+    const { postNode, url, postSEO, pageSEO } = this.props;
+    let {title, description, image} = pageSEO || {};
     let postURL;
     let author;
     let datePublished;
@@ -21,14 +19,9 @@ class SEO extends Component {
         : postNode.excerpt;
       image = postMeta.coverURL || postMeta.coverFile.publicURL;
       datePublished = postMeta.date;
-      postURL = urljoin(config.siteUrl, config.pathPrefix, postPath);
-    } else {
-      title = config.siteTitle;
-      description = config.siteDescription;
-      image = config.siteLogo;
+      postURL = urljoin(config.siteUrl, config.pathPrefix, url);
     }
-
-    image = urljoin(config.siteUrl, config.pathPrefix, image);
+    if (image) image = urljoin(config.siteUrl, config.pathPrefix, image);
     const blogURL = urljoin(config.siteUrl, config.pathPrefix);
     const schemaOrgJSONLD = [
       {
@@ -86,10 +79,10 @@ class SEO extends Component {
     }
 
     return (
-      <Helmet>
+      <Helmet title={title}>
         {/* General tags */}
         <meta name="description" content={description} />
-        <meta name="image" content={image} />
+        {image ? <meta name="image" content={image} /> : null}
 
         {/*/!* Schema.org tags *!/*/}
         {/*<script type="application/ld+json">*/}
@@ -97,11 +90,11 @@ class SEO extends Component {
         {/*</script>*/}
 
         {/*/!* OpenGraph tags *!/*/}
-        {/*<meta property="og:url" content={postSEO ? postURL : blogURL} />*/}
-        {/*{postSEO ? <meta property="og:type" content="article" /> : null}*/}
-        {/*<meta property="og:title" content={title} />*/}
-        {/*<meta property="og:description" content={description} />*/}
-        {/*<meta property="og:image" content={image} />*/}
+        <meta property="og:url" content={postSEO ? postURL : url} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        {image ? <meta property="og:image" content={image} /> : null}
+        {postSEO ? <meta property="og:type" content="article" /> : null}
 
         {/*/!* Twitter Card tags *!/*/}
         {/*<meta name="twitter:card" content="summary_large_image" />*/}
