@@ -1,6 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
+import urljoin from "url-join";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Layout from "../layout";
@@ -32,7 +33,7 @@ export default class PostTemplate extends React.Component {
             <title>{`${post.title} | ${config.siteTitle}`}</title>
           </Helmet>
           {/*<SEO postPath={slug} postNode={postNode} postSEO />*/}
-          <NavBar style={{background: config.secondary.dark}} location={this.props.location} />
+          <NavBar style={{background: config.secondary.dark}} location={{pathname: urljoin(config.pathPrefix, '/blog/')}} />
           <div style={{ textAlign: 'left', backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light} 40%, ${config.primary.light} 60%, ${config.secondary.dark})`, padding: '1em 0' }}>
             <Card style={{width: '90%', margin: '10px auto', maxWidth: '800px'}}>
               <CardContent>

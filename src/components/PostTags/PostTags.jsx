@@ -11,7 +11,7 @@ class PostTags extends Component {
     if (!Array.isArray(tags)) return null;
     return (
       tags.map((tag, i) => {
-        return (<Link to={`/tags/${kebabCase(tag)}`} key={i} style={{textDecoration: 'none'}}><Chip label={`#${tag}`} clickable="true" className={this.props.classes.chip}/></Link>)
+        return (<Link to={`/tags/${kebabCase(tag)}`} key={i} style={{textDecoration: 'none'}}><Chip label={`#${tag}`} clickable className={this.props.classes.chip}/></Link>)
       })
     )
   }

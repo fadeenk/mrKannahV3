@@ -148,8 +148,7 @@ module.exports = {
                 url: rssMetadata.site_url + edge.node.fields.slug,
                 guid: rssMetadata.site_url + edge.node.fields.slug,
                 custom_elements: [
-                  { "content:encoded": edge.node.html },
-                  { author: config.userEmail }
+                  { "content:encoded": edge.node.html }
                 ]
               }));
             },

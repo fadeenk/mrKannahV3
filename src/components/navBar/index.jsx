@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {Link} from 'gatsby';
+import urljoin from "url-join";
 import logo from '../../../static/logos/logo.svg';
 import TabNavigation from './tabNavigation';
 import DrawerNavigation from './drawerNavigation';
@@ -16,23 +17,23 @@ const routes = [{
   value: '/',
 }, {
   label: 'About',
-  value: '/about/',
+  value: urljoin(config.pathPrefix, '/about/'),
   nested: [{
     label: 'Education',
-    value: '/about/education/',
+    value: urljoin(config.pathPrefix, '/about/education/'),
   },{
     label: 'Software Development',
-    value: '/about/softwareDevelopment/',
+    value: urljoin(config.pathPrefix, '/about/softwareDevelopment/'),
   }]
 }, {
   label: 'Resume',
-  value: '/resume',
+  value: urljoin(config.pathPrefix, '/resume/'),
 }, {
   label: 'Blog',
-  value: '/blog',
+  value: urljoin(config.pathPrefix, '/blog/'),
 }, {
   label: 'Contact',
-  value: '/contact',
+  value: urljoin(config.pathPrefix, '/contact/'),
 }];
 
 class NavBar extends Component {
