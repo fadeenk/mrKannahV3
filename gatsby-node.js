@@ -203,7 +203,7 @@ exports.createPages = ({ graphql, actions }) => {
     }
     const aboutPage = path.resolve("src/templates/about.jsx");
     const pages = result.data.allMarkdownRemark.edges.map(edge => ({
-      route: urljoin(siteConfig.pathPrefix, edge.node.frontmatter.route),
+      route: edge.node.frontmatter.route,
       title: edge.node.frontmatter.title,
     }));
     pages.forEach((page) => {
