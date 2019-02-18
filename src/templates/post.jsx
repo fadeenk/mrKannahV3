@@ -8,7 +8,7 @@ import Layout from "../layout";
 import Disqus from "../components/Disqus/Disqus";
 import PostTags from "../components/PostTags/PostTags";
 import SocialLinks from "../components/SocialLinks/SocialLinks";
-// import SEO from "../components/SEO/SEO";
+import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 import "./b16-tomorrow-dark.css";
 import "./post.css";
@@ -32,7 +32,7 @@ export default class PostTemplate extends React.Component {
           <Helmet>
             <title>{`${post.title} | ${config.siteTitle}`}</title>
           </Helmet>
-          {/*<SEO postPath={slug} postNode={postNode} postSEO />*/}
+          <SEO postPath={slug} postNode={postNode} postSEO />
           <NavBar style={{background: config.secondary.dark}} location={{pathname: urljoin(config.pathPrefix, '/blog/')}} />
           <div style={{ textAlign: 'left', backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light} 40%, ${config.primary.light} 60%, ${config.secondary.dark})`, padding: '1em 0' }}>
             <Card style={{width: '90%', margin: '10px auto', maxWidth: '800px'}}>
@@ -64,10 +64,13 @@ export const pageQuery = graphql`
       frontmatter {
         title
         coverURL
-        cover {
+        coverFile {
           publicURL
         }
         date
+        author
+        publisher
+        dateModified
         category
         tags
       }

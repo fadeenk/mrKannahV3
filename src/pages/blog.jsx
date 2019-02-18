@@ -48,7 +48,7 @@ export const pageQuery = graphql`
             title
             tags
             coverURL
-            cover {
+            coverFile {
               publicURL
             }
             date

@@ -1,7 +1,7 @@
 ---
 title: "Big Test"
+coverFile:
 coverURL: "https://unsplash.it/400/300/?random?BigTest"
-cover: ./index.md
 category: "tech"
 date: "01/03/2018"
 slug: "Big-Sample_Test"

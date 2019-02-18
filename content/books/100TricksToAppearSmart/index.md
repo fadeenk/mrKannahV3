@@ -1,7 +1,10 @@
 ---
 title: 100 Tricks to Appear Smart in Meetings
-cover: ./cover.jpg
-coverURL: ""
+coverFile: ./cover.jpg
+coverURL:
+author: Fadee Kannah
+publisher: MrKannah.com
+dateModified: ""
 date: 02/06/2019
 completed: 02/04/2019
 category: books

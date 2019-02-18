@@ -1,7 +1,6 @@
 const config = {
   siteTitle: "Mr. Kannah", // Site title.
   siteTitleShort: "Mr. Kannah", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
-  siteTitleAlt: "Mr. Kannah", // Alternative site title for SEO.
   siteLogo: "/logos/logo-1024.png", // Logo used for SEO and manifest.
   siteUrl: "https://mrkannah.com", // Domain of your website without pathPrefix.
   pathPrefix: "/mrKannahV2", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.

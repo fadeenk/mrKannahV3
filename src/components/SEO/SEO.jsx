@@ -10,13 +10,17 @@ class SEO extends Component {
     let description;
     let image;
     let postURL;
+    let author;
+    let datePublished;
+    let dateModified;
     if (postSEO) {
       const postMeta = postNode.frontmatter;
-      ({ title } = postMeta);
+      ({ title, author, dateModified } = postMeta);
       description = postMeta.description
         ? postMeta.description
         : postNode.excerpt;
-      image = postMeta.cover;
+      image = postMeta.coverURL || postMeta.coverFile.publicURL;
+      datePublished = postMeta.date;
       postURL = urljoin(config.siteUrl, config.pathPrefix, postPath);
     } else {
       title = config.siteTitle;
@@ -31,8 +35,7 @@ class SEO extends Component {
         "@context": "http://schema.org",
         "@type": "WebSite",
         url: blogURL,
-        name: title,
-        alternateName: config.siteTitleAlt ? config.siteTitleAlt : ""
+        name: config.siteTitle,
       }
     ];
     if (postSEO) {
@@ -47,7 +50,10 @@ class SEO extends Component {
               item: {
                 "@id": postURL,
                 name: title,
-                image
+                image: {
+                  "@type": "ImageObject",
+                  url: image
+                },
               }
             }
           ]
@@ -55,25 +61,35 @@ class SEO extends Component {
         {
           "@context": "http://schema.org",
           "@type": "BlogPosting",
-          url: blogURL,
+          url: postURL,
           name: title,
-          alternateName: config.siteTitleAlt ? config.siteTitleAlt : "",
           headline: title,
           image: {
             "@type": "ImageObject",
             url: image
           },
+          author: {
+            "@type": "Person",
+            name: author,
+          },
+          publisher: {
+            "@type": "Organization",
+            url: blogURL,
+            name: author,
+            logo: urljoin(config.siteUrl, config.pathPrefix, '/static/', config.siteLogo),
+          },
+          datePublished,
+          dateModified,
           description
         }
       );
     }
+
     return (
       <Helmet>
-        <meta name="robots" content="noindex,nofollow" />
-        
         {/* General tags */}
-        {/*<meta name="description" content={description} />*/}
-        {/*<meta name="image" content={image} />*/}
+        <meta name="description" content={description} />
+        <meta name="image" content={image} />
 
         {/*/!* Schema.org tags *!/*/}
         {/*<script type="application/ld+json">*/}
@@ -86,10 +102,6 @@ class SEO extends Component {
         {/*<meta property="og:title" content={title} />*/}
         {/*<meta property="og:description" content={description} />*/}
         {/*<meta property="og:image" content={image} />*/}
-        {/*<meta*/}
-          {/*property="fb:app_id"*/}
-          {/*content={config.siteFBAppID ? config.siteFBAppID : ""}*/}
-        {/*/>*/}
 
         {/*/!* Twitter Card tags *!/*/}
         {/*<meta name="twitter:card" content="summary_large_image" />*/}

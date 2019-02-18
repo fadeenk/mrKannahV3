@@ -50,7 +50,7 @@ export const pageQuery = graphql`
             tags
             category
             coverURL
-            cover {
+            coverFile {
               publicURL
             }
             date

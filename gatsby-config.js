@@ -21,13 +21,6 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-lodash",
     {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "assets",
-        path: `${__dirname}/static/`
-      }
-    },
-    {
       resolve: "gatsby-plugin-sentry",
       options: {
         dsn: "https://0bfb726366f144d681a2b3631c7f791d@sentry.io/233818",
@@ -35,6 +28,13 @@ module.exports = {
         environment: process.env.NODE_ENV,
         autoBreadcrumbs: true,
         enabled: (() => ["production", "stage"].indexOf(process.env.NODE_ENV) !== -1)()
+      }
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "assets",
+        path: `${__dirname}/static/`
       }
     },
     {
