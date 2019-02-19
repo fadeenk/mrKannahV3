@@ -10,11 +10,12 @@ class SEO extends Component {
     let {title, description, image} = pageSEO || {};
     let postURL;
     let author;
+    let authorTwitter;
     let datePublished;
     let dateModified;
     if (postSEO) {
       const postMeta = postSEO.frontmatter;
-      ({ title, author, dateModified } = postMeta);
+      ({ title, author, authorTwitter, dateModified } = postMeta);
       description = postMeta.description
         ? postMeta.description
         : postSEO.excerpt;
@@ -100,12 +101,7 @@ class SEO extends Component {
 
         {/*/!* Twitter Card tags *!/*/}
         <meta name="twitter:card" content="summary_large_image" />
-        {postSEO ?
-          <meta name="twitter:creator" content={
-            postSEO.frontmatter.authorTwitter ? postSEO.frontmatter.authorTwitter : null
-          } /> :
-          null
-        }
+        {authorTwitter ? <meta name="twitter:creator" content={authorTwitter} /> : null}
         <meta name="twitter:site" content="@fadeenk" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
