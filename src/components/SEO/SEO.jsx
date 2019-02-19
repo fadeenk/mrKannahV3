@@ -2,26 +2,28 @@ import React, { Component } from "react";
 import Helmet from "react-helmet";
 import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
+import picture from "../../../static/fadee.jpg";
 
 class SEO extends Component {
   render() {
-    const { postNode, url, postSEO, pageSEO } = this.props;
+    const { url, postSEO, pageSEO } = this.props;
     let {title, description, image} = pageSEO || {};
     let postURL;
     let author;
     let datePublished;
     let dateModified;
     if (postSEO) {
-      const postMeta = postNode.frontmatter;
+      const postMeta = postSEO.frontmatter;
       ({ title, author, dateModified } = postMeta);
       description = postMeta.description
         ? postMeta.description
-        : postNode.excerpt;
+        : postSEO.excerpt;
       image = postMeta.coverURL || postMeta.coverFile.publicURL;
       datePublished = postMeta.date;
       postURL = urljoin(config.siteUrl, config.pathPrefix, url);
     }
     if (image) image = urljoin(config.siteUrl, config.pathPrefix, image);
+    else image = picture;
     const blogURL = urljoin(config.siteUrl, config.pathPrefix);
     const schemaOrgJSONLD = [
       {
@@ -69,7 +71,7 @@ class SEO extends Component {
             "@type": "Organization",
             url: blogURL,
             name: author,
-            logo: urljoin(config.siteUrl, config.pathPrefix, '/static/', config.siteLogo),
+            logo: urljoin(config.siteUrl, config.pathPrefix, config.siteLogo),
           },
           datePublished,
           dateModified,
@@ -82,7 +84,7 @@ class SEO extends Component {
       <Helmet title={title}>
         {/* General tags */}
         <meta name="description" content={description} />
-        {image ? <meta name="image" content={image} /> : null}
+        <meta name="image" content={image} />
 
         {/*/!* Schema.org tags *!/*/}
         {/*<script type="application/ld+json">*/}
@@ -93,18 +95,21 @@ class SEO extends Component {
         <meta property="og:url" content={postSEO ? postURL : url} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        {image ? <meta property="og:image" content={image} /> : null}
+        <meta property="og:image" content={image} />
         {postSEO ? <meta property="og:type" content="article" /> : null}
 
         {/*/!* Twitter Card tags *!/*/}
-        {/*<meta name="twitter:card" content="summary_large_image" />*/}
-        {/*<meta*/}
-          {/*name="twitter:creator"*/}
-          {/*content={config.userTwitter ? config.userTwitter : ""}*/}
-        {/*/>*/}
-        {/*<meta name="twitter:title" content={title} />*/}
-        {/*<meta name="twitter:description" content={description} />*/}
-        {/*<meta name="twitter:image" content={image} />*/}
+        <meta name="twitter:card" content="summary_large_image" />
+        {postSEO ?
+          <meta name="twitter:creator" content={
+            postSEO.frontmatter.authorTwitter ? postSEO.frontmatter.authorTwitter : null
+          } /> :
+          null
+        }
+        <meta name="twitter:site" content="@fadeenk" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={image} />
       </Helmet>
     );
   }

@@ -21,7 +21,6 @@ class Index extends React.Component {
     const pageSEO = {
       title: config.siteTitle,
       description: config.siteDescription,
-      image: config.siteLogo,
     };
     return (
       <Layout>
