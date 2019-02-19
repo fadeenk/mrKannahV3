@@ -8,10 +8,10 @@ publisher: MrKannah.com
 dateModified: ""
 date: 02/06/2019
 completed: 02/04/2019
-category: books
+category: Books
 tags:
-    - business
-    - comedy
+    - Business
+    - Comedy
 ---
 ![Cover](./cover.jpg)
 ## Introduction

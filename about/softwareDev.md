@@ -1,6 +1,7 @@
 ---
 route: "/about/softwareDevelopment/"
 title: "Software Development"
+description: "Learn about my software development career."
 ---
 
 Since I was a kid, I always liked problem solving, breaking things, and putting them back together. When I got my first computer, I took it all apart and put it back together. The next day, my curiosity got the best of me and I ended up deleting my Windows OS. To feed my curiosity, I spent all my allowance on purchasing software and video games. Playing around with different software allowed me to learn a lot of different skills (editing, animating, 3D modeling, manipulating data and much more).

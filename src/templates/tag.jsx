@@ -13,10 +13,13 @@ export default class CategoryTemplate extends React.Component {
   render() {
     const { tag } = this.props.pageContext;
     const postEdges = this.props.data.allMarkdownRemark.edges;
+    const pageSEO = {
+      title: `${tag} Posts | ${config.siteTitle}`,
+      description: `Posts tagged as "${tag}".`,
+    };
     return (
       <Layout>
-        <Helmet title={`Posts tagged as "${tag}" | ${config.siteTitle}`} />
-        <SEO />
+        <SEO url={this.props.location.href} pageSEO={pageSEO} />
         <NavBar style={{background: config.secondary.dark}} location={{pathname: urljoin(config.pathPrefix, '/blog/')}} />
         <div style={{ textAlign: 'left', backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light} 40%, ${config.primary.light} 60%, ${config.secondary.dark})`, padding: '1em 0' }}>
           <PostListing postEdges={postEdges} />

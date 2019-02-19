@@ -1,5 +1,4 @@
 import React from "react";
-import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../layout";
 import PostListing from "../components/PostListing/PostListing";
@@ -11,10 +10,13 @@ import config from "../../data/SiteConfig";
 class Index extends React.Component {
   render() {
     const postEdges = this.props.data.allMarkdownRemark.edges;
+    const pageSEO = {
+      title: `Blog | ${config.siteTitle}`,
+      description: `Explore all articles and posts published on my website.`,
+    };
     return (
       <Layout>
-        <Helmet title={config.siteTitle} />
-        <SEO />
+        <SEO url={this.props.location.href} pageSEO={pageSEO}/>
         <NavBar style={{background: config.secondary.dark}} location={this.props.location} />
         <div style={{ textAlign: 'left', backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light} 40%, ${config.primary.light} 60%, ${config.secondary.dark})`, padding: '1em 0' }}>
           <PostListing postEdges={postEdges} />

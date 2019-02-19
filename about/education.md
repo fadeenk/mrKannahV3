@@ -1,6 +1,7 @@
 ---
 route: "/about/education/"
 title: "Education"
+description: "Learn about my educational journey."
 ---
 
 For me, education is an ongoing process. From early age, I have always been interested in learning, learning about everything from how history shaped our current societies to how atoms work. From sneaking out of classes to spend time in the library, to reading my dad's college books, I always found a way to learn something new. My passion for learning led to where I am, from learning programming to co-founding CourseKey to even greater things.

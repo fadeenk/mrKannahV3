@@ -1,6 +1,7 @@
 ---
 route: "/about/"
 title: "Summary"
+description: "Learn about my life and my achievements"
 ---
 
 Originally from Iraq. I was born in [Bartella](https://en.wikipedia.org/wiki/Bartella), a small town located east of Mosul. I lived my childhood in Baghdad. However, I moved back to Bartella in 2006 due to lack of safety and the dangers of the aftermath of the war. In 2008, we moved to Turkey, where we applied to be refugees in the United States through the United Nations. Within nine months, we were granted visas to the US.

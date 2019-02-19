@@ -190,6 +190,7 @@ exports.createPages = ({ graphql, actions }) => {
               frontmatter {
                 route
                 title
+                description
               }
             }
           }
@@ -205,6 +206,7 @@ exports.createPages = ({ graphql, actions }) => {
     const pages = result.data.allMarkdownRemark.edges.map(edge => ({
       route: edge.node.frontmatter.route,
       title: edge.node.frontmatter.title,
+      description: edge.node.frontmatter.description,
     }));
     pages.forEach((page) => {
       createPage({

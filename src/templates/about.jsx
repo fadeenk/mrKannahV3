@@ -57,11 +57,13 @@ class About extends Component {
     const path = this.props.location.pathname;
     const pages = this.props.pageContext.pages;
     const page = this.props.data.markdownRemark;
-
+    const pageSEO = {
+      title: `About ${page.frontmatter.title} | ${config.siteTitle}`,
+      description: page.frontmatter.description,
+    };
     return (
       <Layout>
-        <Helmet title={`About | ${config.siteTitle}`} />
-        <SEO />
+        <SEO url={this.props.location.href} pageSEO={pageSEO} />
         <NavBar style={{background: config.secondary.dark}} location={this.props.location} />
         <div style={{backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light} 40%, ${config.primary.light} 60%, ${config.secondary.dark})`}}>
           <AboutNavBar page={page} pages={pages} classes={this.props.classes} path={path} />
@@ -82,6 +84,7 @@ export const pageQuery = graphql`
       frontmatter {
         route
         title
+        description
       }
     }
   }
