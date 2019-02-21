@@ -18,7 +18,7 @@ Dev workflow
 - making it interactive
 
 
-- pick your way to scake
+- pick your way to scale
 - flexible design
 - api should be for both human and machines
 - support the customers 
