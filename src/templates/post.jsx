@@ -72,7 +72,7 @@ export const pageQuery = graphql`
         coverFile {
           publicURL
         }
-        date
+        date(formatString: "MMMM DD, YYYY")
         author
         authorTwitter
         publisher
