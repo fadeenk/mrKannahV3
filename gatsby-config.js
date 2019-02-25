@@ -5,7 +5,8 @@ const remarkPlugins = [
   {
     resolve: "gatsby-remark-images",
     options: {
-      maxWidth: 690
+      maxWidth: 690,
+      showCaptions: true,
     }
   },
   {
