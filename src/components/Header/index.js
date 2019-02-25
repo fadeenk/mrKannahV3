@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ParticlesBackground from './visualEffect';
+import ParticlesBackground from './VisualEffect';
 import ProfilePicture from './profilePicture';
 import MyTypist from './myTypist';
 import config from '../../../data/SiteConfig';
