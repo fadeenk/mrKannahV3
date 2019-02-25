@@ -1,6 +1,27 @@
 const urljoin = require("url-join");
 const config = require("./data/SiteConfig");
 
+const remarkPlugins = [
+  {
+    resolve: "gatsby-remark-images",
+    options: {
+      maxWidth: 690
+    }
+  },
+  {
+    resolve: "gatsby-remark-responsive-iframe"
+  },
+  {
+    resolve: "gatsby-remark-prismjs"
+  },
+  {
+    resolve: "gatsby-remark-copy-linked-files"
+  },
+  {
+    resolve: "gatsby-remark-autolink-headers"
+  }
+];
+
 module.exports = {
   pathPrefix: config.pathPrefix === "" ? "/" : config.pathPrefix,
   siteMetadata: {
@@ -54,20 +75,13 @@ module.exports = {
     {
       resolve: "gatsby-transformer-remark",
       options: {
-        plugins: [
-          {
-            resolve: "gatsby-remark-images",
-            options: {
-              maxWidth: 690
-            }
-          },
-          {
-            resolve: "gatsby-remark-responsive-iframe"
-          },
-          "gatsby-remark-prismjs",
-          "gatsby-remark-copy-linked-files",
-          "gatsby-remark-autolink-headers"
-        ]
+        plugins: remarkPlugins
+      }
+    },
+    {
+      resolve: "gatsby-mdx",
+      options: {
+        gatsbyRemarkPlugins: remarkPlugins
       }
     },
     {

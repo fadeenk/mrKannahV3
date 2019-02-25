@@ -12,7 +12,7 @@ import Footer from "../components/Footer";
 export default class CategoryTemplate extends React.Component {
   render() {
     const { tag } = this.props.pageContext;
-    const postEdges = this.props.data.allMarkdownRemark.edges;
+    const postEdges = this.props.data.allMdx.edges;
     const pageSEO = {
       title: `${tag} Posts | ${config.siteTitle}`,
       description: `Posts tagged as "${tag}".`,
@@ -33,7 +33,7 @@ export default class CategoryTemplate extends React.Component {
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query TagPage($tag: String) {
-    allMarkdownRemark(
+    allMdx(
       limit: 1000
       sort: { fields: [fields___date], order: DESC }
       filter: { frontmatter: { tags: { in: [$tag] } } }

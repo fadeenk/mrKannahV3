@@ -9,7 +9,7 @@ import config from "../../data/SiteConfig";
 
 class Index extends React.Component {
   render() {
-    const postEdges = this.props.data.allMarkdownRemark.edges;
+    const postEdges = this.props.data.allMdx.edges;
     const pageSEO = {
       title: `Blog | ${config.siteTitle}`,
       description: `Explore all articles and posts published on my website.`,
@@ -32,7 +32,7 @@ export default Index;
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query IndexQuery {
-    allMarkdownRemark(
+    allMdx(
       limit: 2000
       sort: { fields: [fields___date], order: DESC }
       filter: { fileAbsolutePath: {regex:"/content/"} }

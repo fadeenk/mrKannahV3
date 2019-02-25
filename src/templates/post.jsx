@@ -2,6 +2,7 @@ import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import urljoin from "url-join";
+import {MDXRenderer} from "gatsby-mdx";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Layout from "../layout";
@@ -18,7 +19,7 @@ import Footer from "../components/Footer";
 export default class PostTemplate extends React.Component {
   render() {
     const { slug } = this.props.pageContext;
-    const postNode = this.props.data.markdownRemark;
+    const postNode = this.props.data.mdx;
     const post = postNode.frontmatter;
     if (!post.id) {
       post.id = slug;
@@ -38,7 +39,9 @@ export default class PostTemplate extends React.Component {
             <Card style={{width: '90%', margin: '10px auto', maxWidth: '800px'}}>
               <CardContent>
                 <h1>{post.title}</h1>
-                <div style={{marginLeft: '5px'}} dangerouslySetInnerHTML={{ __html: postNode.html }} />
+                <div style={{marginLeft: '5px'}}>
+                  <MDXRenderer>{postNode.code.body}</MDXRenderer>
+                </div>
                 <PostTags tags={post.tags} />
                 <div className="post-meta">
                   <SocialLinks postPath={slug} postNode={postNode} />
@@ -57,8 +60,10 @@ export default class PostTemplate extends React.Component {
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+    mdx(fields: { slug: { eq: $slug } }) {
+      code {
+        body
+      }
       timeToRead
       excerpt
       frontmatter {

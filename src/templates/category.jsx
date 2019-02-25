@@ -12,7 +12,7 @@ import Footer from "../components/Footer";
 export default class CategoryTemplate extends React.Component {
   render() {
     const { category } = this.props.pageContext;
-    const postEdges = this.props.data.allMarkdownRemark.edges;
+    const postEdges = this.props.data.allMdx.edges;
     const pageSEO = {
       title: `${category} Posts | ${config.siteTitle}`,
       description: `Posts in category "${category}".`,
@@ -34,7 +34,7 @@ export default class CategoryTemplate extends React.Component {
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query CategoryPage($category: String) {
-    allMarkdownRemark(
+    allMdx(
       limit: 1000
       sort: { fields: [fields___date], order: DESC }
       filter: { frontmatter: { category: { eq: $category } } }
