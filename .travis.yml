@@ -1,0 +1,8 @@
+sudo: false
+language: node_js
+script:
+  - npm run build:pp
+node_js:
+  - "6"
+  - "8"
+  - "10"
