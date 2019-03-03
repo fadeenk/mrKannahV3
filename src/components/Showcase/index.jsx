@@ -8,8 +8,9 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import Fab from '@material-ui/core/Fab';
 import green from '@material-ui/core/colors/green';
 import grey from '@material-ui/core/colors/grey';
+import blueGrey from '@material-ui/core/colors/blueGrey';
 import red from '@material-ui/core/colors/red';
-import youtubeRedirector from './assests/you.png';
+import logo from '../../../static/logos/logo.svg';
 import github from './assests/GitHub.png';
 import coursekey from './assests/ck.png';
 import "./carousel.css";
@@ -25,7 +26,7 @@ const transition = 'all 750ms';
 
 class Showcase extends Component {
 
-  slideCount = 3;
+  slideCount = 4;
   componentWillMount() {
     this.setState({index: 0})
   }
@@ -65,19 +66,29 @@ class Showcase extends Component {
                        Working with an amazing team to improve the educational experience for students, instructors and administrators
                      </p>}
               />
-              <Slide style={{ backgroundColor: red['400'] }}
+              <Slide style={{ backgroundColor: grey['600'] }}
                      id={1}
-                     header={<img src={youtubeRedirector} alt="Youtube Redirector logo" style={imgStyles} />}
-                     headerBackColor={red['200']}
-                     link='https://chrome.google.com/webstore/detail/youtube-redirector/fnlklbjlpkkdnelohembgpdahpfpfcbp'
-                     title='YouTube Redirector'
+                     header={<img src={logo} alt="Website logo" style={imgStyles} />}
+                     headerBackColor={grey['500']}
+                     link='https://mrKannah.com'
+                     title='Updated Website'
                      content={<p style={paragraphBody}>
-                       A new revamped and upgraded version of my chrome extension for YouTube redirect to subscriptions page
+                       Upgraded my personal website by migrating it to <a href="https://www.gatsbyjs.org/">GatsbyJS</a> and improving few things
                      </p>}
               />
-              <Slide id={2} style={{ backgroundColor: grey['600'] }}
+              <Slide style={{ backgroundColor: blueGrey['600'] }}
+                     id={2}
+                     header={<img src={logo} alt="Website logo" style={imgStyles} />}
+                     headerBackColor={blueGrey['400']}
+                     link='https://mrKannah.com/blog'
+                     title='New Blog'
+                     content={<p style={paragraphBody}>
+                       Implemented a blog for my website and migrated some of my content to it
+                     </p>}
+              />
+              <Slide id={3} style={{ backgroundColor: red['600'] }}
                      header={<img src={github} alt="Github logo" style={imgStyles} />}
-                     headerBackColor={grey['400']}
+                     headerBackColor={red['400']}
                      link='https://github.com/fadeenk'
                      title='Github Profile'
                      content={<p style={paragraphBody}>
