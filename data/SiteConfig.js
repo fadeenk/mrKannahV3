@@ -3,15 +3,14 @@ const config = {
   siteTitleShort: "Mr. Kannah", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteLogo: "/static/logos/logo-1024.png", // Logo used for SEO and manifest.
   siteUrl: "https://mrkannah.com", // Domain of your website without pathPrefix.
-  pathPrefix: "/mrKannahV2", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
+  pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
   siteDescription: "Fadee Kannah's portfolio site. Includes everything you need to know about me.", // Website description used for RSS feeds/meta description tag.
   siteRss: "/rss.xml", // Path to the RSS file.
-  googleAnalyticsID: "UA-XXXXXXX-5", // GA tracking ID.
-  disqusShortname: "https-vagr9k-github-io-gatsby-advanced-starter", // Disqus shortname.
+  googleAnalyticsID: "UA-28181698-1", // GA tracking ID.
+  disqusShortname: "mrkannah", // Disqus shortname.
   postDefaultCategoryID: "Tech", // Default category for posts.
   dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
   dateFormat: "DD/MM/YYYY", // Date format for display.
-  userTwitter: "", // used for SEO.
   copyright: "Fadee Kannah © 2019", // Copyright string for the footer of the website and RSS feed.
   themeColor: "#26a69a", // Used for setting manifest and progress theme colors.
   backgroundColor: "#1c313a", // Used for setting manifest background color.
