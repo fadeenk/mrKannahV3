@@ -17,23 +17,23 @@ const routes = [{
   value: '/',
 }, {
   label: 'About',
-  value: urljoin(config.pathPrefix, '/about/'),
+  value: '/about/',
   nested: [{
     label: 'Education',
-    value: urljoin(config.pathPrefix, '/about/education/'),
+    value: '/about/education/',
   },{
     label: 'Software Development',
-    value: urljoin(config.pathPrefix, '/about/softwareDevelopment/'),
+    value: '/about/softwareDevelopment/',
   }]
 }, {
   label: 'Resume',
-  value: urljoin(config.pathPrefix, '/resume/'),
+  value: '/resume/',
 }, {
   label: 'Blog',
-  value: urljoin(config.pathPrefix, '/blog/'),
+  value: '/blog/',
 }, {
   label: 'Contact',
-  value: urljoin(config.pathPrefix, '/contact/'),
+  value: '/contact/',
 }];
 
 class NavBar extends Component {
