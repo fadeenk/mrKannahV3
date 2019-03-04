@@ -50,6 +50,7 @@
     "react-swipeable-views": "^0.13.1",
     "react-twitter-widgets": "^1.7.1",
     "react-typist": "^2.0.5",
+    "react-youtube": "^7.9.0",
     "url-join": "^4.0.0"
   },
   "devDependencies": {

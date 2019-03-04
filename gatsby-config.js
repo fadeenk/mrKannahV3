@@ -82,6 +82,9 @@ module.exports = {
     {
       resolve: "gatsby-mdx",
       options: {
+        globalScope: `import Gallery from "react-photo-gallery";
+        import YouTube from 'react-youtube';
+        export default { Gallery, YouTube };`,
         gatsbyRemarkPlugins: remarkPlugins
       }
     },
