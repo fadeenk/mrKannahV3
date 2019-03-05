@@ -50,6 +50,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             tags
+            author
             category
             coverURL
             coverFile {

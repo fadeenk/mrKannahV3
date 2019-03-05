@@ -49,6 +49,7 @@ export const pageQuery = graphql`
             category
             title
             tags
+            author
             coverURL
             coverFile {
               publicURL

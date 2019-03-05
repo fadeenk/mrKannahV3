@@ -26,6 +26,7 @@ class PostListing extends React.Component {
       postList.push({
         path: postEdge.node.fields.slug,
         tags: postEdge.node.frontmatter.tags,
+        author: postEdge.node.frontmatter.author,
         category: postEdge.node.frontmatter.category,
         cover: postEdge.node.frontmatter.coverURL || postEdge.node.frontmatter.coverFile.publicURL,
         title: postEdge.node.frontmatter.title,
@@ -65,7 +66,7 @@ class PostListing extends React.Component {
                     {post.title}
                   </h2>
                 </Link>
-                {post.date} &mdash; {post.timeToRead} Min Read &mdash; In <Link to={`/categories/${kebabCase(post.category)}`} className={this.props.classes.link}>{post.category}</Link><br/>
+                {post.date} &mdash; {post.timeToRead} Min Read &mdash; In <Link to={`/categories/${kebabCase(post.category)}`} className={this.props.classes.link}>{post.category}</Link> &mdash; By: {post.author}<br/>
                 {post.excerpt} {post.tags ? (<br/>) : null} <PostTags tags={post.tags} />
                 <br style={{clear: 'both'}} />
                 {i < postList.length -1 ? <Divider style={{margin: '20px 0'}}/> : null}
