@@ -34,7 +34,7 @@ export default class PostTemplate extends React.Component {
             <title>{`${post.title} | ${config.siteTitle}`}</title>
           </Helmet>
           <SEO url={slug} postSEO={postNode}  />
-          <NavBar style={{background: config.secondary.dark}} location={{pathname: urljoin(config.pathPrefix, '/blog/')}} />
+          <NavBar style={{background: config.secondary.dark}} location={{pathname: '/blog/'}} />
           <div style={{ textAlign: 'left', backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light} 40%, ${config.primary.light} 60%, ${config.secondary.dark})`, padding: '1em 0' }}>
             <Card style={{width: '90%', margin: '10px auto', maxWidth: '800px'}}>
               <CardContent>
