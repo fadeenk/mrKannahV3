@@ -55,7 +55,7 @@ class PostListing extends React.Component {
             postList.map((post, i) => (
               <div key={i}>
                 <Link to={post.path} className={this.props.classes.link}>
-                  <img src={post.cover} width='40%' style={{float: 'left', marginRight: '10px', borderRadius: '4px'}} />
+                  <img src={post.cover} className="blogImage" style={{float: 'right', marginLeft: '10px', marginBottom: '10px', borderRadius: '4px'}} />
                   <h2 style={{
                     textShadow: '0 12px 30px rgba(0, 0, 0, 0.15)',
                     fontSize: '2rem',
@@ -66,7 +66,8 @@ class PostListing extends React.Component {
                     {post.title}
                   </h2>
                 </Link>
-                {post.date} &mdash; {post.timeToRead} Min Read &mdash; In <Link to={`/categories/${kebabCase(post.category)}`} className={this.props.classes.link}>{post.category}</Link> &mdash; By: {post.author}<br/>
+                <small style={{color: config.primary.dark}}>By: {post.author}</small><br/>
+                {post.date} &mdash; {post.timeToRead} Min Read &mdash; In <Link to={`/categories/${kebabCase(post.category)}`} className={this.props.classes.link}>{post.category}</Link><br/>
                 {post.excerpt} {post.tags ? (<br/>) : null} <PostTags tags={post.tags} />
                 <br style={{clear: 'both'}} />
                 {i < postList.length -1 ? <Divider style={{margin: '20px 0'}}/> : null}
