@@ -11,7 +11,7 @@ export default class MainLayout extends React.Component {
         <Helmet>
           <meta name="description" content={config.siteDescription} />
           <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
+          <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Poppins" rel="stylesheet" />
         </Helmet>
         {children}
       </div>
