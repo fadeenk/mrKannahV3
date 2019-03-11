@@ -7,4 +7,6 @@
 pre {
     margin: 0;
     text-align: center;
+    white-space: pre-line;
+    font-size: medium;
 }
