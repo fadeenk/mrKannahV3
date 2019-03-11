@@ -43,6 +43,17 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-lodash",
     {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@components": "src/components",
+        },
+        extensions: [
+          "jsx",
+        ]
+      }
+    },
+    {
       resolve: "gatsby-plugin-sentry",
       options: {
         dsn: "https://0bfb726366f144d681a2b3631c7f791d@sentry.io/233818",
@@ -82,6 +93,8 @@ module.exports = {
     {
       resolve: "gatsby-mdx",
       options: {
+        globalScope: `import Gallery from "react-photo-gallery";
+        export default { Gallery };`,
         gatsbyRemarkPlugins: remarkPlugins
       }
     },

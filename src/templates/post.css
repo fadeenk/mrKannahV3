@@ -3,3 +3,10 @@
     flex-direction: column;
     justify-content: center;
 }
+
+pre {
+    margin: 0;
+    text-align: center;
+    white-space: pre-line;
+    font-size: medium;
+}
