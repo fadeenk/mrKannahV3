@@ -19,7 +19,7 @@ function fullDay(str) {
   }
 }
 
-function initWeather() {
+window.initWeather = function() {
   window.$wrapper = $('.wrapper'),
   window.$panel = $wrapper.find('.panel'),
   window.$city = $panel.find('#city'),
