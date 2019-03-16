@@ -1,12 +1,4 @@
-var CACHE = 'v2.2';
-const CACHE_MISS = 'cache-miss';
-var filesToCache = [
-  '/490/',
-  '/490/index.html',
-  '/490/scripts/app.js',
-  '/490/styles/inline.css',
-  '/490/manifest.webmanifest',
-];
+var CACHE = 'v2.3';
 
 self.addEventListener('install', function(e) {
   console.log('[ServiceWorker] Install');

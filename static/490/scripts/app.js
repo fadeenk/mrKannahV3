@@ -19,25 +19,27 @@ function fullDay(str) {
   }
 }
 
-var $wrapper = $('.wrapper'),
-  $panel = $wrapper.find('.panel'),
-  $city = $panel.find('#city'),
-  $weather = $panel.find('.weather'),
-  $group = $panel.find('.group'),
-  $dt = $group.find('#dt'),
-  $description = $group.find('#description'),
-  $wind = $group.find('#wind'),
-  $humidity = $group.find('#humidity'),
-  $temperature = $weather.find('#temperature'),
-  $temp = $temperature.find('#temp'),
-  $icon = $temp.find('#condition'),
-  $tempNumber = $temp.find('#num'),
-  $celsius = $temp.find('#celsius'),
-  $fahrenheit = $temp.find('#fahrenheit'),
-  $forecast = $weather.find('#forecast'),
-  $search = $wrapper.find('search'),
-  $form = $search.find('form'),
-  $button = $form.find('#button');
+function initWeather() {
+  window.$wrapper = $('.wrapper'),
+  window.$panel = $wrapper.find('.panel'),
+  window.$city = $panel.find('#city'),
+  window.$weather = $panel.find('.weather'),
+  window.$group = $panel.find('.group'),
+  window.$dt = $group.find('#dt'),
+  window.$description = $group.find('#description'),
+  window.$wind = $group.find('#wind'),
+  window.$humidity = $group.find('#humidity'),
+  window.$temperature = $weather.find('#temperature'),
+  window.$temp = $temperature.find('#temp'),
+  window.$icon = $temp.find('#condition'),
+  window.$tempNumber = $temp.find('#num'),
+  window.$celsius = $temp.find('#celsius'),
+  window.$fahrenheit = $temp.find('#fahrenheit'),
+  window.$forecast = $weather.find('#forecast'),
+  window.$search = $wrapper.find('search'),
+  window.$form = $search.find('form'),
+  window.$button = $form.find('#button');
+}
 
 window.getWeather = function({lat, lon}) {
 
@@ -201,10 +203,3 @@ window.getWeather = function({lat, lon}) {
     doForecast('fahrenheit');
   });
 }
-
-$form.submit(function(event) {
-  var input = document.getElementById('search').value;
-  var inputLength = input.length;
-  if (inputLength) getWeather(input);
-  event.preventDefault();
-});
