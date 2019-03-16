@@ -53,6 +53,7 @@ a:hover,
 .wrapper {
   margin: 0 auto;
   margin-top: 10px;
+  padding: 5px;
 }
 .searchbar,
 .button {
