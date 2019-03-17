@@ -24,13 +24,13 @@ class PDFViewer extends React.Component {
     if (width < 600) {
       this.setState({width: window.screen.width * .9})
     } else {
-      this.setState({width: 800})
+      this.setState({width: document.getElementsByClassName('pdfContainer')[0].clientWidth})
     }
   };
 
   render() {
     return (
-      <div className='container' >
+      <div className='pdfContainer' >
         <Document file={{ url: this.props.url }}>
           <Page pageNumber={1} width={this.state.width}/>
         </Document>

@@ -1,19 +1,19 @@
 /* Mobile view */
 @media only screen and (max-width: 600px) {
-    .container {
+    .pdfContainer {
         max-width: none;
     }
 }
 
 /* Desktop view */
 @media only screen and (min-width: 600px) {
-    .container {
+    .pdfContainer {
         max-width: 800px;
     }
 }
 
 /* General */
-.container {
+.pdfContainer {
     width: 90%;
     text-align: center;
     margin: auto;
