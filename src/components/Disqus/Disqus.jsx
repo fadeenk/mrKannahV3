@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReactDisqusComments from "react-disqus-comments";
+import { DiscussionEmbed, CommentCount } from 'disqus-react';
 import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
 
@@ -33,15 +33,14 @@ class Disqus extends Component {
       config.pathPrefix,
       postNode.fields.slug
     );
+    const disqusConfig = {
+      url: url,
+      identifier: post.title,
+      title: post.title,
+    };
+
     return (
-      <ReactDisqusComments
-        shortname={config.disqusShortname}
-        identifier={post.title}
-        title={post.title}
-        url={url}
-        category_id={post.category_id}
-        onNewComment={this.notifyAboutComment}
-      />
+      <DiscussionEmbed shortname={config.disqusShortname} config={disqusConfig} />
     );
   }
 }
