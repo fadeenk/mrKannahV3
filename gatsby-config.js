@@ -93,8 +93,6 @@ module.exports = {
     {
       resolve: "gatsby-mdx",
       options: {
-        globalScope: `import Gallery from "react-photo-gallery";
-        export default { Gallery };`,
         gatsbyRemarkPlugins: remarkPlugins
       }
     },
