@@ -12,7 +12,7 @@
     "axios": "0.18.0",
     "disqus-react": "1.0.5",
     "gatsby": "2.3.25",
-    "gatsby-image": "2.0.39",
+    "gatsby-image": "2.0.40",
     "gatsby-mdx": "0.6.2",
     "gatsby-plugin-alias-imports": "1.0.5",
     "gatsby-plugin-catch-links": "2.0.13",
