@@ -7,8 +7,18 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 class PDFViewer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {width: 800};
+    this.state = {
+      width: 800, numPages: null,
+      fileObject: { url: props.url },
+    };
   }
+
+  onDocumentLoadSuccess = (document) => {
+    const { numPages } = document;
+    this.setState({
+      numPages,
+    });
+  };
 
   componentDidMount() {
     this.handleResize();
@@ -29,10 +39,20 @@ class PDFViewer extends React.Component {
   };
 
   render() {
+    const { numPages } = this.state;
     return (
       <div className='pdfContainer' >
-        <Document file={{ url: this.props.url }}>
-          <Page pageNumber={1} width={this.state.width}/>
+        <Document file={this.state.fileObject} onLoadSuccess={this.onDocumentLoadSuccess}>
+          {Array.from(
+            new Array(numPages),
+            (el, index) => (
+              <Page
+                key={`page_${index + 1}`}
+                pageNumber={index + 1}
+                width={this.state.width}
+              />
+            ),
+          )}
         </Document>
       </div>
     )
