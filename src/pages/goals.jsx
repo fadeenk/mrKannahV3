@@ -10,7 +10,7 @@ import config from "../../data/SiteConfig";
 
 const goals = [{
   goal: 'Become an engineer',
-  description: 'Childhood goal to become an engineer. Over time it got more specific and decided to become a computer engineer. Although, was working professionally as an engineer I wanted to make it official. As of May 2019, I am a SDSU Alumni Computer engineer.',
+  description: 'Childhood goal to become an engineer. Over time it got more specific and decided to become a computer engineer. Although, was working professionally as an engineer I wanted to make it official. As of May 2019, I am a SDSU alumnus computer engineer.',
   done: true,
 }, {
   goal: 'Be in a newspaper',
@@ -26,52 +26,28 @@ const goals = [{
   description: <p>Done a little bit on different places, <a href="https://medium.com/@fadeekannah">medium</a>, <a href="https://dev.to/fadeenk">dev.to</a> and mostly on my <a href="/blog">blog</a>.</p>,
   done: true,
 }, {
-  goal: 'Understand my financial situation',
+  goal: 'Have a financial roadmap',
   description: 'Have a better understanding of where I stand financially. Have a map to get out of dept. Have assets evaluated and documented. Have budget plan.',
   done: false,
 }, {
   goal: 'Have a retirement plan',
-  description: 'Ensure easy retirement is possible',
+  description: 'Ensure easy/early retirement is possible',
   done: false,
 }, {
   goal: 'Become financially independent',
   description: 'Won\'t have to worry about money',
   done: false,
 }, {
-  goal: 'Live in three countries',
-  description: 'Iraq, Turkey and USA',
-  done: false,
-}, {
-  goal: 'Visit 10 countries',
-  description: 'Mexico',
-  done: false,
-}, {
   goal: 'Become a millionaire',
   description: '',
   done: false,
 }, {
-  goal: 'Publish a book',
-  description: '',
-  done: false,
-}, {
-  goal: 'Buy a house',
-  description: '',
-  done: true,
-}, {
-  goal: 'Buy a second house',
-  description: '',
-  done: false,
-}, {
-  goal: 'Visit Japan',
-  description: '',
-  done: false,
-}, {
   goal: 'Start my own business',
-  description: '',
+  description: 'Kannah software and consulting services.',
   done: true,
 }, {
   goal: 'Become venture backed business',
-  description: '',
+  description: 'CourseKey',
   done: true,
 }, {
   goal: 'Have multiple incomes',
@@ -79,19 +55,43 @@ const goals = [{
   done: false,
 }, {
   goal: 'Invent new things',
-  description: '',
+  description: 'Mostly random software',
   done: true,
 }, {
   goal: 'Have a patent',
-  description: '',
+  description: <a href="https://patents.google.com/patent/US10212542B2/">Facilitating a meeting or education session</a>,
   done: true,
 }, {
   goal: 'Have a second patent',
   description: '',
   done: false,
 }, {
-  goal: 'Stay healthy',
+  goal: 'Buy a house',
+  description: 'Family house',
+  done: true,
+}, {
+  goal: 'Buy a second house',
+  description: 'source of income or vacation place',
+  done: false,
+}, {
+  goal: 'Live in three countries',
+  description: 'Iraq, Turkey and USA',
+  done: true,
+}, {
+  goal: 'Visit 3 countries',
+  description: 'Mexico',
+  done: false,
+}, {
+  goal: 'Visit Japan',
   description: '',
+  done: false,
+}, {
+  goal: 'Publish a book',
+  description: '',
+  done: false,
+}, {
+  goal: 'Stay healthy',
+  description: 'Maintain healthy wieght and stay active',
   done: false,
 }, {
   goal: 'Enjoy my time',
