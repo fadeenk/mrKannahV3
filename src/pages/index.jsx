@@ -27,9 +27,9 @@ class Index extends React.Component {
         <SEO url={this.props.location.href} pageSEO={pageSEO} />
         <NavBar style={{background: config.secondary.dark}} location={this.props.location} />
         <Header />
-        <div id="about" style={{padding: '10px 0', backgroundColor: config.primary.light}}>
+        <div role="main" aria-labelledby="mainHeader" id="about" style={{padding: '10px 0', backgroundColor: config.primary.light}}>
           <Card style={cardStyles}>
-            <CardHeader title="About Me"/>
+            <CardHeader id="mainHeader" title="About Me" />
             <CardContent>
               <p>I am currently the Chief Technology Officer at <a href="https://coursekeyeducation.com/" rel="noopener noreferrer" target="_blank">CourseKey Education</a>, which is where my passion for technology, learning,
                 and entrepreneurship converge. Additionally, I am the owner of Kannah Consulting and Software Services (licensed in the city of El Cajon), which allows me to work with different companies and startups.</p>

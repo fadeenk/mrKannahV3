@@ -18,9 +18,10 @@ function Slide (props) {
     headerBackColor,
     style,
     link,
+    visible,
     label
   } = props;
-  
+
   const slideID = `slide${id}`;
   return (
     <div id={slideID} style={style}>
@@ -28,9 +29,10 @@ function Slide (props) {
       <div style={{padding: '10px'}}>
         <p style={titleStyles}>{title}</p>
         {content}
-        {link && 
+        {link &&
         <div style={{marginTop: '10px', textAlign: 'center'}}><Button
           variant='contained'
+          disabled={!visible}
           onClick={() => window.open(link, '_blank')}
         >
           {label || 'Learn more'}
@@ -45,6 +47,7 @@ Slide.propTypes = {
   id: PropTypes.number.isRequired,
   headerBackColor: PropTypes.string,
   link: PropTypes.string,
+  visible: PropTypes.bool.isRequired,
   label: PropTypes.string,
   content: PropTypes.node.isRequired,
 }

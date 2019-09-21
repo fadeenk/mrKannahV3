@@ -25,7 +25,7 @@ class ProfilePicture extends Component {
         padding: '10px',
       }} >
         <Paper zdepth={3} style={{padding: '5px', borderRadius: '50%', ...style}}>
-          <Avatar src={picture} style={{width: '100%', height: '100%', padding: 0, ...style}}/>
+          <Avatar alt="Fadee Kannah" src={picture} style={{width: '100%', height: '100%', padding: 0, ...style}}/>
         </Paper>
       </div>
     )

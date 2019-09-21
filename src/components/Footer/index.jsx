@@ -26,14 +26,14 @@ class Footer extends Component {
   getLinkElements() {
     return userLinks.map(link => (
       <a href={link.url} key={link.label}>
-        <IconButton>{link.icon}</IconButton>
+        <IconButton aria-label={link.label}>{link.icon}</IconButton>
       </a>
     ));
   }
 
   render() {
     return (
-      <div style={{
+      <div role="region" aria-label="Footer" style={{
         background: config.secondary.dark,
         textAlign: 'center',
         margin: '0 auto',

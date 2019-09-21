@@ -39,7 +39,7 @@ const routes = [{
 class NavBar extends Component {
   render() {
     return (
-      <div id="navbar" style={this.props.style}>
+      <div role="navigation" id="navbar" style={this.props.style}>
         <div style={{maxWidth: '800px', margin: '0 auto'}}>
           <Link to="/">
             <img src={logo} alt="logo" style={{height: logoSize.height, float: 'left', fill: config.primary.main}} />
