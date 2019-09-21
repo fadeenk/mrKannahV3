@@ -42,7 +42,7 @@ class TabNavigation extends Component {
         config.primary.main :
         'black';
       return (
-        <MenuItem key={route.value} value={route.value} style={{color}} onClick={(event) => {
+        <MenuItem role="menuitem" key={route.value} value={route.value} style={{color}} onClick={(event) => {
           this.dismissDropdown(event, route.value);
           navigate(route.value);
         }}>
@@ -51,7 +51,7 @@ class TabNavigation extends Component {
       )
     });
     return (
-      <DropDownMenu open={Boolean(this.state[route.value])}
+      <DropDownMenu role="complementary" id={`dropdown${route.value}`} open={Boolean(this.state[route.value])}
                     value={route.value}
                     anchorEl={this.state[route.value]}
                     onClose={(event) => this.dismissDropdown(event, route.value)}
@@ -90,7 +90,7 @@ class TabNavigation extends Component {
       )
     });
     return (
-      <Tabs value={this.getParentRouteValue()} centered variant="fullWidth" className='desktop'
+      <Tabs id="navigation" value={this.getParentRouteValue()} centered variant="fullWidth" className='desktop'
             onChange={(event, value) => this.openDropdownMenu(value)}
             classes={{indicator: this.props.classes.indicator}}
       >

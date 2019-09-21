@@ -44,13 +44,16 @@ class DrawerNavigation extends Component {
     this.setState(state);
   }
 
-  getMenuItemForRoute = (route, nested) => {
+  getMenuItemForRoute = (route, nested, parent) => {
     const color = route.value.toLowerCase() === this.props.location.pathname.toLowerCase() ?
       config.primary.light :
       'white';
+    const hidden = !this.state[parent] && nested;
     return (
       <MenuItem key={route.value} value={route.value}
-                style={{color}}
+                style={{color, display: hidden ? 'none' : 'inherit'}}
+                role="menuitem"
+                disabled={hidden}
                 onClick={() => navigate(route.value)}
       >
         <span style={{paddingLeft: nested ? '18px' : 0}}>{route.label}</span>
@@ -60,18 +63,19 @@ class DrawerNavigation extends Component {
 
   getMenuItemsForRouteWithNested = (route) => {
     const subItems = route.nested.map((subRoute) => {
-      return this.getMenuItemForRoute(subRoute, true);
+      return this.getMenuItemForRoute(subRoute, true, route.value);
     });
     const color = route.value.toLowerCase() === this.props.location.pathname ?
       config.primary.light :
       'white';
     const mainRoute =
-      <MenuItem key={route.value} value={route.value}
+      <MenuItem role="menuitem" key={route.value} value={route.value}
                 style={{color, marginRight: '40px'}}
                 onClick={() => navigate(route.value)}
       >
         {route.label}
-        <IconButton onClick={(event) => this.toggleMenu(event, route.value)}
+        <IconButton aria-label={this.state[route.value] ? "Expand" : "Collapse"} onClick={(event) => this.toggleMenu(event, route.value)}
+                    id={`toggle${route.value}`}
                     style={{
                       width: '36px', height: '36px', zIndex: 1000, color,
                       marginTop: '-5px', position: 'fixed', right: '4px'
@@ -82,9 +86,7 @@ class DrawerNavigation extends Component {
       </MenuItem>;
     return [
       mainRoute,
-      <Collapse key={route.label} in={this.state[route.value]} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>{subItems}</List>
-      </Collapse>
+      subItems,
     ];
   }
 
@@ -98,13 +100,13 @@ class DrawerNavigation extends Component {
     });
     return (
       <div style={{textAlign: 'right'}} className='mobile'>
-        <IconButton onClick={this.toggleDrawer}>
+        <IconButton id="drawerButton" aria-label="open drawer" onClick={this.toggleDrawer}>
           <MenuIcon style={{color: config.primary.main}}/>
         </IconButton>
-        <Drawer open={this.state.openDrawer} anchor="right"
+        <Drawer role="navigation" open={this.state.openDrawer} anchor="right"
                 classes={{paper: this.props.classes.paper}}
                 onClose={this.toggleDrawer} style={{textAlign: 'left'}}>
-          <List>
+          <List id="mobileNav" role="menubar">
             {items}
           </List>
         </Drawer>
