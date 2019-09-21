@@ -57,7 +57,7 @@ class Showcase extends Component {
             <AutoPlaySwipeableViews animateHeight={true} style={{borderRadius: '10px'}} interval={7000}
                                     index={this.state.index} onChangeIndex={this.change}
             >
-              <Slide id={0} style={{backgroundColor: green['600']}}
+              <Slide id={0} style={{backgroundColor: green['800']}}
                      header={<img src={coursekey} alt="CourseKey logo" style={imgStyles} />}
                      headerBackColor={green['400']}
                      link='https://coursekeyeducation.com'
@@ -73,7 +73,7 @@ class Showcase extends Component {
                      link='https://mrKannah.com'
                      title='Updated Website'
                      content={<p style={paragraphBody}>
-                       Upgraded my personal website by migrating it to <a href="https://www.gatsbyjs.org/">GatsbyJS</a> and improving few things
+                       Upgraded my personal website by migrating it to GatsbyJS and improving few things
                      </p>}
               />
               <Slide style={{ backgroundColor: blueGrey['600'] }}
@@ -86,7 +86,7 @@ class Showcase extends Component {
                        Implemented a blog for my website and migrated some of my content to it
                      </p>}
               />
-              <Slide id={3} style={{ backgroundColor: red['600'] }}
+              <Slide id={3} style={{ backgroundColor: red['800'] }}
                      header={<img src={github} alt="Github logo" style={imgStyles} />}
                      headerBackColor={red['400']}
                      link='https://github.com/fadeenk'
