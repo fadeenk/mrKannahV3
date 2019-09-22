@@ -55,7 +55,7 @@ class PostListing extends React.Component {
             postList.map((post, i) => (
               <div key={i}>
                 <Link to={post.path} className={this.props.classes.link}>
-                  <img src={post.cover} className="blogImage" style={{float: 'right', marginLeft: '10px', marginBottom: '10px', borderRadius: '4px'}} />
+                  <img alt={post.title + 'Thumbnail'} src={post.cover} className="blogImage" style={{float: 'right', marginLeft: '10px', marginBottom: '10px', borderRadius: '4px'}} />
                   <h2 style={{
                     textShadow: '0 12px 30px rgba(0, 0, 0, 0.15)',
                     fontSize: '2rem',

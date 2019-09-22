@@ -39,7 +39,7 @@ const AboutNavBar = ({ page, pages, classes, path }) => (
           centered variant="fullWidth"
       >
         {pages.map(node =>
-          <Tab key={node.route} label={node.title} value={node.route}
+          <Tab key={node.route} label={node.route === path ? <span role="heading" aria-level="1">{node.title}</span> : node.title} value={node.route}
                style = {{backgroundColor: config.primary.main}} />
         )}
       </Tabs>

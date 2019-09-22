@@ -7,7 +7,7 @@ export default class MainLayout extends React.Component {
   render() {
     const { children } = this.props;
     return (
-      <div>
+      <div role="main">
         <Helmet>
           <meta name="description" content={config.siteDescription} />
           <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />

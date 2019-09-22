@@ -66,6 +66,7 @@
     "eslint": "6.7.1",
     "eslint-config-airbnb": "18.0.1",
     "eslint-config-prettier": "6.7.0",
+    "eslint-plugin-cypress": "^2.6.1",
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-react": "7.16.0",
@@ -85,8 +86,8 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
+    "cy:open": "node getPages && cypress open",
+    "cy:run": "node getPages && cypress run",
     "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open",
     "test:e2e:ci": "start-server-and-test develop http://localhost:8000 cy:run",
     "develop": "gatsby develop",
