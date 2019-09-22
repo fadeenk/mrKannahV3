@@ -1,6 +1,6 @@
-// const viewports = ['iphone-6', 'ipad-2', [1024, 768]];
-const viewports = [[1024, 768]];
 const pages = require('../fixtures/pages.json');
+
+const viewports = ['iphone-6', [1024, 768]];
 const slowPages = ['/resume/', '/blog/'];
 pages.forEach((page) => {
   describe(`Testing ${page}`, () => {
