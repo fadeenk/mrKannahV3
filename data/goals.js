@@ -50,5 +50,6 @@ new Goal(TYPES.Work, 'Become an investor and help small businesses');
 new Goal(TYPES.Possessions, 'Buy a Predator Thronos');
 new Goal(TYPES.Personal, 'Solve big complex problems to make the world better');
 new Goal(TYPES.Charity, 'Help my extended family that is in need');
+new Goal(TYPES.Personal, 'Become a mentor');
 
 export default goals;
