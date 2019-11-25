@@ -32,7 +32,7 @@ class myGallery extends Component {
                 views={photos.map(x => ({
                   ...x,
                   srcset: x.srcSet,
-                  caption: x.title
+                  caption: x.caption
                 }))}
               />
             </Modal>
