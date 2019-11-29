@@ -90,12 +90,14 @@ class TabNavigation extends Component {
       )
     });
     return (
-      <Tabs id="navigation" value={this.getParentRouteValue()} centered variant="fullWidth" className='desktop'
-            onChange={(event, value) => this.openDropdownMenu(value)}
-            classes={{indicator: this.props.classes.indicator}}
-      >
-        {tabs}
-      </Tabs>
+      <div className='desktop'>
+        <Tabs id="navigation" value={this.getParentRouteValue()} centered variant="fullWidth"
+              onChange={(event, value) => this.openDropdownMenu(value)}
+              classes={{indicator: this.props.classes.indicator}}
+        >
+          {tabs}
+        </Tabs>
+      </div>
     )
   }
 }
