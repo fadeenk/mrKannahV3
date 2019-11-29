@@ -82,6 +82,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         });
       }
     }
+    if (node.fileAbsolutePath.includes('/blog/')) {
+      slug = `/blog${slug}`;
+    }
     createNodeField({ node, name: "slug", value: slug });
     postNodes.push(node);
   }
@@ -107,7 +110,7 @@ exports.createPages = ({ graphql, actions }) => {
         `
           {
             allMdx (
-              filter: { fileAbsolutePath: {regex:"/content/"} }
+              filter: { fileAbsolutePath: {regex:"/blog/"} }
             ) {
               edges {
                 node {

@@ -99,8 +99,8 @@
     "clean": "rm -rf public && rm -rf .cache",
     "deploy": "npm run clean && gatsby build --prefix-paths && gh-pages -d public -b gh-pages -t",
     "lint:js": "eslint --ext .js,.jsx .",
-    "lint:md": "remark content/posts/",
-    "write-good": "write-good $(glob 'content/posts/**/*.md')",
+    "lint:md": "remark blog/posts/",
+    "write-good": "write-good $(glob 'blog/posts/**/*.md')",
     "format:js": "prettier '**/*.{js,jsx}' --write"
   },
   "remarkConfig": {
