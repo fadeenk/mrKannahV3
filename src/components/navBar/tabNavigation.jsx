@@ -69,7 +69,7 @@ class TabNavigation extends Component {
         return (
           <Tab key={route.value} value={route.value}
                label={route.label}
-               classes={{label: this.props.classes.label}}
+               classes={{textColorInherit: this.props.classes.label}}
                onClick={() => navigate(route.value)}
           />
         )
@@ -79,7 +79,7 @@ class TabNavigation extends Component {
       return (
         <Tab key={route.value} value={route.value}
              onClick={(event) => this.openDropdownMenu(event, route.value)}
-             classes={{label: this.props.classes.label}}
+             classes={{textColorInherit: this.props.classes.label}}
              label={
                 <div>
                   <span style={{fontSize: '14px'}}>{label}</span>
