@@ -10,9 +10,19 @@ const query = `{
   }
 }`;
 const excludedPages = ["/dev-404-page/", "/goals/"];
+const excludedDynamicPages = ['/tags/', '/categories/', '/blog/'];
+const templatePagesToTest = ['/tags/startup/', '/categories/personal/', '/blog/developer-week-conference-recap'];
+
 request('http://localhost:8000/___graphql', query).then(data => {
-  const pages = data.allSitePage.edges.map((edge) => edge.node.path).filter((page) => {
-    return !excludedPages.includes(page)
-  }).sort();
+  const paths = data.allSitePage.edges.map((edge) => edge.node.path).sort();
+  let pages = paths.filter((page) => {
+    if (excludedPages.includes(page)) {
+      return false;
+    }
+    return excludedDynamicPages.every((dynamicPage) => {
+      return !page.startsWith(dynamicPage) || (page.startsWith(dynamicPage) && page.endsWith(dynamicPage))
+    });
+  });
+  pages = [...pages, ...templatePagesToTest];
   fs.writeFileSync('./cypress/fixtures/pages.json', JSON.stringify(pages))
 });
