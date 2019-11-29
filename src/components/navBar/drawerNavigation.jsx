@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { navigate } from "gatsby"
 import Drawer from '@material-ui/core/Drawer';
 import Collapse from '@material-ui/core/Collapse';
-import List from '@material-ui/core/List';
+import MenuList from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -56,13 +56,13 @@ class DrawerNavigation extends Component {
                 disabled={hidden}
                 onClick={() => navigate(route.value)}
       >
-        <span style={{paddingLeft: nested ? '18px' : 0}}>{route.label}</span>
+        <span style={{paddingLeft: nested ? '18px' : 0}}>{route.nestedLabel || route.label}</span>
       </MenuItem>
     )
   }
 
   getMenuItemsForRouteWithNested = (route) => {
-    const subItems = route.nested.map((subRoute) => {
+    const subItems = [route, ...route.nested].map((subRoute) => {
       return this.getMenuItemForRoute(subRoute, true, route.value);
     });
     const color = route.value.toLowerCase() === this.props.location.pathname ?
@@ -70,19 +70,12 @@ class DrawerNavigation extends Component {
       'white';
     const mainRoute =
       <MenuItem role="menuitem" key={route.value} value={route.value}
-                style={{color, marginRight: '40px'}}
-                onClick={() => navigate(route.value)}
+                id={`toggle${route.value}`}
+                aria-label={(this.state[route.value] ? "Collapse" : "Expand") + ' ' + route.label}
+                style={{color}}
+                onClick={(event) => this.toggleMenu(event, route.value)}
       >
-        {route.label}
-        <IconButton aria-label={this.state[route.value] ? "Expand" : "Collapse"} onClick={(event) => this.toggleMenu(event, route.value)}
-                    id={`toggle${route.value}`}
-                    style={{
-                      width: '36px', height: '36px', zIndex: 1000, color,
-                      marginTop: '-5px', position: 'fixed', right: '4px'
-                    }}
-        >
-          {this.state[route.value] ? <ExpandLess /> : <ExpandMore />}
-        </IconButton>
+        {route.label} {this.state[route.value] ? <ExpandLess /> : <ExpandMore />}
       </MenuItem>;
     return [
       mainRoute,
@@ -106,9 +99,9 @@ class DrawerNavigation extends Component {
         <Drawer role="navigation" open={this.state.openDrawer} anchor="right"
                 classes={{paper: this.props.classes.paper}}
                 onClose={this.toggleDrawer} style={{textAlign: 'left'}}>
-          <List id="mobileNav" role="menubar">
+          <MenuList id="mobileNav" role="menubar">
             {items}
-          </List>
+          </MenuList>
         </Drawer>
       </div>
     )

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { navigate } from "gatsby"
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import DropDownMenu from '@material-ui/core/Menu';
+import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import config from "../../../data/SiteConfig";
@@ -51,13 +51,13 @@ class TabNavigation extends Component {
       )
     });
     return (
-      <DropDownMenu role="complementary" id={`dropdown${route.value}`} open={Boolean(this.state[route.value])}
+      <Menu role="complementary" id={`dropdown${route.value}`} open={Boolean(this.state[route.value])}
                     value={route.value}
                     anchorEl={this.state[route.value]}
                     onClose={(event) => this.dismissDropdown(event, route.value)}
       >
         {routes}
-      </DropDownMenu>
+      </Menu>
     )
   }
 

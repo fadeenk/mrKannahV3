@@ -18,6 +18,7 @@ const routes = [{
 }, {
   label: 'About',
   value: '/about/',
+  nestedLabel: 'Summary',
   nested: [{
     label: 'Education',
     value: '/about/education/',
