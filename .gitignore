@@ -60,3 +60,5 @@ public/
 bundle-stats.json
 
 cypress/fixtures/pages.json
+cypress/screenshots
+cypress/videos
