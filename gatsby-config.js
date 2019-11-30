@@ -145,7 +145,6 @@ module.exports = {
         ]
       }
     },
-    "gatsby-plugin-remove-serviceworker",
     {
       resolve: "gatsby-plugin-feed",
       options: {
