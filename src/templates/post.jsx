@@ -2,7 +2,7 @@ import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import urljoin from "url-join";
-import {MDXRenderer} from "gatsby-mdx";
+import { MDXRenderer } from "gatsby-plugin-mdx"
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Layout from "../layout";
@@ -40,7 +40,7 @@ export default class PostTemplate extends React.Component {
               <CardContent>
                 <h1>{post.title}</h1>
                 <div style={{marginLeft: '5px'}}>
-                  <MDXRenderer>{postNode.code.body}</MDXRenderer>
+                  <MDXRenderer>{postNode.body}</MDXRenderer>
                 </div>
                 <PostTags tags={post.tags} />
                 <div className="post-meta">
@@ -61,9 +61,7 @@ export default class PostTemplate extends React.Component {
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
-      code {
-        body
-      }
+      body
       timeToRead
       excerpt
       frontmatter {
