@@ -20,6 +20,17 @@ const styles = {
 };
 
 class PostListing extends React.Component {
+  cleanupExcerpt(excerpt) {
+    const hotWords = ['introduction', 'why?', 'background information', 'presenters', 'presenter']
+    const excerptLower = excerpt.toLowerCase()
+    for (const hotWord of hotWords) {
+      if (excerptLower.startsWith(hotWord)) {
+        return excerpt.substring(hotWord.length + 1);
+      }
+    }
+    return excerpt
+  }
+
   getPostList(postEdges) {
     const postList = [];
     postEdges.forEach(postEdge => {
@@ -31,7 +42,7 @@ class PostListing extends React.Component {
         cover: postEdge.node.frontmatter.coverURL || postEdge.node.frontmatter.coverFile.publicURL,
         title: postEdge.node.frontmatter.title,
         date: postEdge.node.frontmatter.date,
-        excerpt: postEdge.node.excerpt,
+        excerpt: this.cleanupExcerpt(postEdge.node.excerpt),
         timeToRead: postEdge.node.timeToRead
       });
     });
