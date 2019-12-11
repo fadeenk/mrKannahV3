@@ -167,6 +167,8 @@ import other28 from "./images/other28.jpg";
 import other29 from "./images/other29.jpg";
 import other30 from "./images/other30.jpg";
 import other31 from "./images/other31.jpg";
+import other32 from "./images/other32.jpg";
+import facedetect from "./images/facedetect.jpg";
 
 ## Introduction
 Last year I did a year review and I really enjoyed reflecting back on it. I had decided that I will keep documenting each year's highlights. This year however I decided to do it slightly different! Instead of waiting till the new year and spending a week or so trying to remember all the information, I wrote things down as they were happening. You can read the month by month highlights or skip to the summary section below.
@@ -521,7 +523,7 @@ This year has been both challenging and rewarding!
 
 At CourseKey we have built and shipped our biggest releases ever! We had two massive releases that changed how the system works entirely! The first big release was our ground work that transitioned our system to an Accounting based attendance (record keeping approach to attendance). The second massive release was the revamp of our adjustment/correction system where we created a wizard for the user to use along with a whole new set of features to solve pain points they were experiencing.
 
-With all those challenges we experienced a major growth. We got awarded our first patent. We were recognized as one of the 2019 Cool Companies by San Diego Venture Group. Additionally, we were recognized as one of the top tech employers in San Diego by Hired. We have doubled our campus wide adoptions year over year in the last three years. We have raised $5 million series A. We did our first industry focused virtual summit.
+With all those challenges we experienced a major growth. We got awarded our first patent. We were recognized as one of the 2019 Cool Companies by San Diego Venture Group. Additionally, we were recognized as one of the top tech employers in San Diego by Hired. We have doubled our campus wide adoptions year over year in the last three years. We have raised $5 million series A. We did our first industry focused virtual summit. And most importantly, we have added new great people to the team.
 
 Balancing life, work and learning! This has been one of the biggest issues that I have faced. The thing about balancing my time is that each section has so many different things that fall under it that figuring out the best approach to handling it all is not an easy feat. For example, in my life there are so many things going on from family, friends, relationships, health, finances and so on. Work has me pulled into 100 different directions, from different projects, management, development, hiring, scaling, maintaining, security, mentoring and so on. Finally learning... the most broad problem! There is so much to learn that there is not enough time to absorb it all.
 
@@ -565,6 +567,7 @@ Although things been crazy, I still got to enjoy majority of my time. I got to t
    { src: other29, width: 958, height: 720 },
    { src: other30, width: 720, height: 362 },
    { src: other31, width: 2016, height: 1512 },
+   { src: other32, width: 960, height: 540 },
    { src: mesu, width: 300, height: 534},
 ]} />
 
@@ -607,6 +610,13 @@ All my "maintained" packages now have an automated countinous integration and de
 After using medium for a while, I disliked it because it could not handle complex long posts. Additionally, with all the new pay walls they are adding I decided I could do it better so this is why I created [my blog](./).
 #### Contacts management system
 I used pipedrive, hubspot, airtable then decided to build my own which I postponed for now
+
+#### Image processing and face detection
+When helping my friends with their autonomous car, I got to play a little bit with image processing. That peaked my curiosity and I decided to play a little bit more with it. I just played around with this [nice tutorial](https://pythonprogramming.net/haar-cascade-face-eye-detection-python-opencv-tutorial/?fbclid=IwAR0J-C5WPlYlpni1LgKfT85EUQsGWWjI9ZTp285jM9lbDO_pXiPpzkbpsMA) to detect my face. For those interested there are already prebuilt cascades (detections models) available [online](https://github.com/opencv/opencv/tree/master/data/haarcascades).
+
+<Gallery photos={[
+   { src: facedetect, width: 1251, height: 513 },
+]} />
 
 #### Setup automated smart backup using Azure
 Having a backup drive at home is good but not good enough for me. There is a lot of risk with having the backup in once place. So to protect it, I set up and automated system that encrypts and backs up all my data not only to the backup drive but also to the cloud.
