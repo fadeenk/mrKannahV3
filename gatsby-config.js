@@ -221,6 +221,7 @@ module.exports = {
               }
             }
           `,
+            title: 'Mr. Kannah\'s Blog',
             output: config.siteRss
           }
         ]
