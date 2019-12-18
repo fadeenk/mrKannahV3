@@ -59,7 +59,7 @@
     "url-join": "4.0.1"
   },
   "devDependencies": {
-    "axe-core": "3.4.0",
+    "axe-core": "3.4.1",
     "cli-glob": "0.1.0",
     "cypress": "3.8.0",
     "cypress-axe": "0.5.3",
