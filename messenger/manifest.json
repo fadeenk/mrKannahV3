@@ -1,0 +1,14 @@
+{
+  "name" : "Messenger",
+  "short_name" : "Messenger",
+  "description" : "Messenger",
+  "start_url" : "%PUBLIC_URL%",
+  "display" : "standalone",
+  "orientation" : "portrait",
+  "lang" : "English",
+  "icons": [{
+    "src": "logo-512.png",
+    "type": "image/png",
+    "sizes": "512x512"
+  }]
+}
