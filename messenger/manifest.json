@@ -2,7 +2,7 @@
   "name" : "Messenger",
   "short_name" : "Messenger",
   "description" : "Messenger",
-  "start_url" : "./messenger",
+  "start_url" : "./",
   "display" : "standalone",
   "orientation" : "portrait",
   "lang" : "English",
