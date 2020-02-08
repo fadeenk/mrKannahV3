@@ -2,17 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Redirect</title>
     <script>
         const path = window.location.pathname.toLowerCase();
-        alert(path);
         let destination = window.location.origin;
         if (path.startsWith('/blog/')) destination = window.location.origin + '/blog/';
         if (path.startsWith('/messenger/')) {
-            const pathQuery = encodeURI(window.location.pathname.split(/messenger/)[1]);
+            const pathQuery = encodeURIComponent(window.location.pathname.split(/messenger/)[1]);
             destination = window.location.origin + `/messenger/?redirect=${pathQuery}`;
         }
-        alert(destination);
         window.location.replace(destination);
     </script>
 </head>
