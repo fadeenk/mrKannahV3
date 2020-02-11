@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirect</title>
+    <script>
+        const path = window.location.pathname.toLowerCase();
+        let destination = window.location.origin;
+        if (path.startsWith('/blog/')) destination = window.location.origin + '/blog/';
+        if (path.startsWith('/messenger/')) {
+            const pathQuery = encodeURIComponent(window.location.pathname.split(/messenger/)[1]);
+            destination = window.location.origin + `/messenger/?redirect=${pathQuery}`;
+        }
+        window.location.replace(destination);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
