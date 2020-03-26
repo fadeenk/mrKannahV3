@@ -11,7 +11,7 @@
     "@mdx-js/tag": "0.20.3",
     "axios": "0.19.1",
     "change-case": "4.1.1",
-    "disqus-react": "1.0.7",
+    "disqus-react": "1.0.8",
     "gatsby": "2.18.5",
     "gatsby-image": "2.2.34",
     "gatsby-plugin-alias-imports": "1.0.5",
