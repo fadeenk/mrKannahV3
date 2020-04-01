@@ -60,7 +60,7 @@
     "url-join": "4.0.1"
   },
   "devDependencies": {
-    "axe-core": "3.5.2",
+    "axe-core": "3.5.3",
     "cli-glob": "0.1.0",
     "cypress": "4.3.0",
     "cypress-axe": "0.8.1",
