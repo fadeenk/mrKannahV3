@@ -62,3 +62,4 @@ bundle-stats.json
 cypress/fixtures/pages.json
 cypress/screenshots
 cypress/videos
+__diff_output__
