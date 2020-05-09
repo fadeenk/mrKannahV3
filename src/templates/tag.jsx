@@ -1,5 +1,5 @@
 import React from "react";
-import Helmet from "react-helmet";
+import { Helmet } from "react-helmet";
 import { graphql } from "gatsby";
 import urljoin from "url-join";
 import Layout from "../layout";
@@ -20,9 +20,18 @@ export default class CategoryTemplate extends React.Component {
     return (
       <Layout>
         <SEO url={this.props.location.href} pageSEO={pageSEO} />
-        <NavBar style={{background: config.secondary.dark}} location={{pathname: urljoin(config.pathPrefix, '/blog/')}} />
-        <div style={{ textAlign: 'left', backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light} 40%, ${config.primary.light} 60%, ${config.secondary.dark})`, padding: '1em 0' }}>
-          <h1 style={{textAlign: 'center', color: 'white'}}>{tag}</h1>
+        <NavBar
+          style={{ background: config.secondary.dark }}
+          location={{ pathname: urljoin(config.pathPrefix, "/blog/") }}
+        />
+        <div
+          style={{
+            textAlign: "left",
+            backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light} 40%, ${config.primary.light} 60%, ${config.secondary.dark})`,
+            padding: "1em 0",
+          }}
+        >
+          <h1 style={{ textAlign: "center", color: "white" }}>{tag}</h1>
           <PostListing postEdges={postEdges} />
         </div>
         <Footer />

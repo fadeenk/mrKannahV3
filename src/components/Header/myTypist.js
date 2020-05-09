@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import Typist from 'react-typist';
-
+import React, { Component } from "react";
+import Typist from "react-typist";
 
 class MyTypist extends Component {
-  state = {typing: true};
+  state = { typing: true };
 
   restartTyping = () => {
     this.setState({ typing: false }, () => {
@@ -13,18 +12,18 @@ class MyTypist extends Component {
 
   render() {
     if (this.state.typing) {
-      return(
+      return (
         <Typist onTypingDone={this.restartTyping}>
           <span>software</span>
-          <Typist.Backspace count={8} delay={1000}/>
+          <Typist.Backspace count={8} delay={1000} />
           <span>systems</span>
-          <Typist.Backspace count={7} delay={1000}/>
+          <Typist.Backspace count={7} delay={1000} />
           <span>teams</span>
-          <Typist.Backspace count={5} delay={1000}/>
+          <Typist.Backspace count={5} delay={1000} />
         </Typist>
-      )
+      );
     } else {
-      return (<span> </span>)
+      return <span> </span>;
     }
   }
 }

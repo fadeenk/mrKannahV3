@@ -102,7 +102,7 @@
     "lint:js": "eslint --ext .js,.jsx . --fix",
     "lint:md": "remark blog/posts/",
     "write-good": "write-good $(glob 'blog/posts/**/*.md')",
-    "format:js": "prettier '**/*.{js,jsx}' --write"
+    "format:js": "prettier {src,cypress,data,static}/**/*.{js,jsx} --write"
   },
   "remarkConfig": {
     "plugins": [

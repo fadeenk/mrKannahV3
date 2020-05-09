@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Helmet from "react-helmet";
+import { Helmet } from "react-helmet";
 import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
 import picture from "../../../static/fadee.jpg";
@@ -7,7 +7,7 @@ import picture from "../../../static/fadee.jpg";
 class SEO extends Component {
   render() {
     const { url, postSEO, pageSEO } = this.props;
-    let {title, description, image} = pageSEO || {};
+    let { title, description, image } = pageSEO || {};
     let postURL;
     let author;
     let authorTwitter;
@@ -32,7 +32,7 @@ class SEO extends Component {
         "@type": "WebSite",
         url: blogURL,
         name: config.siteTitle,
-      }
+      },
     ];
     if (postSEO) {
       schemaOrgJSONLD.push(
@@ -48,11 +48,11 @@ class SEO extends Component {
                 name: title,
                 image: {
                   "@type": "ImageObject",
-                  url: image
+                  url: image,
                 },
-              }
-            }
-          ]
+              },
+            },
+          ],
         },
         {
           "@context": "http://schema.org",
@@ -62,7 +62,7 @@ class SEO extends Component {
           headline: title,
           image: {
             "@type": "ImageObject",
-            url: image
+            url: image,
           },
           author: {
             "@type": "Person",
@@ -76,7 +76,7 @@ class SEO extends Component {
           },
           datePublished,
           dateModified,
-          description
+          description,
         }
       );
     }
@@ -87,21 +87,23 @@ class SEO extends Component {
         <meta name="description" content={description} />
         <meta name="image" content={image} />
 
-        {/*/!* Schema.org tags *!/*/}
-        {/*<script type="application/ld+json">*/}
-          {/*{JSON.stringify(schemaOrgJSONLD)}*/}
-        {/*</script>*/}
+        {/* /!* Schema.org tags *!/ */}
+        {/* <script type="application/ld+json"> */}
+        {/* {JSON.stringify(schemaOrgJSONLD)} */}
+        {/* </script> */}
 
-        {/*/!* OpenGraph tags *!/*/}
+        {/* /!* OpenGraph tags *!/ */}
         <meta property="og:url" content={postSEO ? postURL : url} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
         {postSEO ? <meta property="og:type" content="article" /> : null}
 
-        {/*/!* Twitter Card tags *!/*/}
+        {/* /!* Twitter Card tags *!/ */}
         <meta name="twitter:card" content="summary_large_image" />
-        {authorTwitter ? <meta name="twitter:creator" content={authorTwitter} /> : null}
+        {authorTwitter ? (
+          <meta name="twitter:creator" content={authorTwitter} />
+        ) : null}
         <meta name="twitter:site" content="@fadeenk" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />

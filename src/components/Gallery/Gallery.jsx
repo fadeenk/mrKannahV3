@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 
-
 class myGallery extends Component {
   state = {
     currentImage: 0,
@@ -11,11 +10,11 @@ class myGallery extends Component {
 
   openLightbox = (event, { photo, index }) => {
     console.log(photo, index);
-    this.setState({currentImage: index, viewerIsOpen: true});
+    this.setState({ currentImage: index, viewerIsOpen: true });
   };
 
   closeLightbox = () => {
-    this.setState({currentImage: 0, viewerIsOpen: false});
+    this.setState({ currentImage: 0, viewerIsOpen: false });
   };
 
   render() {
@@ -29,10 +28,10 @@ class myGallery extends Component {
             <Modal onClose={this.closeLightbox}>
               <Carousel
                 currentIndex={currentImage}
-                views={photos.map(x => ({
+                views={photos.map((x) => ({
                   ...x,
                   srcset: x.srcSet,
-                  caption: x.caption
+                  caption: x.caption,
                 }))}
               />
             </Modal>

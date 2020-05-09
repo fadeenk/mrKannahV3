@@ -7,24 +7,23 @@ const userLinks = [
   {
     label: "GitHub",
     url: "https://github.com/fadeenk",
-    icon: <FaGithub style={{fill: 'white'}} />
+    icon: <FaGithub style={{ fill: "white" }} />,
   },
   {
     label: "Twitter",
     url: "https://twitter.com/fadeenk",
-    icon: <FaTwitter style={{fill: 'white'}} />
+    icon: <FaTwitter style={{ fill: "white" }} />,
   },
   {
     label: "LinkedIn",
     url: "https://www.linkedin.com/in/fadeek/",
-    icon: <FaLinkedin style={{fill: 'white'}} />
-  }
+    icon: <FaLinkedin style={{ fill: "white" }} />,
+  },
 ];
 
 class Footer extends Component {
-
   getLinkElements() {
-    return userLinks.map(link => (
+    return userLinks.map((link) => (
       <a href={link.url} key={link.label}>
         <IconButton aria-label={link.label}>{link.icon}</IconButton>
       </a>
@@ -33,14 +32,18 @@ class Footer extends Component {
 
   render() {
     return (
-      <div role="region" aria-label="Footer" style={{
-        background: config.secondary.dark,
-        textAlign: 'center',
-        margin: '0 auto',
-        padding: '10px',
-      }}>
+      <div
+        role="region"
+        aria-label="Footer"
+        style={{
+          background: config.secondary.dark,
+          textAlign: "center",
+          margin: "0 auto",
+          padding: "10px",
+        }}
+      >
         {this.getLinkElements()}
-        <p style={{color: 'white', margin: 0}}>{config.copyright}</p>
+        <p style={{ color: "white", margin: 0 }}>{config.copyright}</p>
       </div>
     );
   }

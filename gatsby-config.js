@@ -7,20 +7,20 @@ const remarkPlugins = [
     options: {
       maxWidth: 690,
       showCaptions: true,
-    }
+    },
   },
   {
-    resolve: "gatsby-remark-responsive-iframe"
+    resolve: "gatsby-remark-responsive-iframe",
   },
   {
-    resolve: "gatsby-remark-prismjs"
+    resolve: "gatsby-remark-prismjs",
   },
   {
-    resolve: "gatsby-remark-copy-linked-files"
+    resolve: "gatsby-remark-copy-linked-files",
   },
   {
-    resolve: "gatsby-remark-autolink-headers"
-  }
+    resolve: "gatsby-remark-autolink-headers",
+  },
 ];
 
 module.exports = {
@@ -36,8 +36,8 @@ module.exports = {
         config.siteUrl,
         config.pathPrefix
       )}/logos/logo-512.png`,
-      copyright: config.copyright
-    }
+      copyright: config.copyright,
+    },
   },
   plugins: [
     "gatsby-plugin-react-helmet",
@@ -48,10 +48,8 @@ module.exports = {
         alias: {
           "@components": "src/components",
         },
-        extensions: [
-          "jsx",
-        ]
-      }
+        extensions: ["jsx"],
+      },
     },
     {
       resolve: "gatsby-plugin-sentry",
@@ -60,8 +58,9 @@ module.exports = {
         // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
         environment: process.env.NODE_ENV,
         autoBreadcrumbs: true,
-        enabled: (() => ["production", "stage"].indexOf(process.env.NODE_ENV) !== -1)()
-      }
+        enabled: (() =>
+          ["production", "stage"].indexOf(process.env.NODE_ENV) !== -1)(),
+      },
     },
     {
       resolve: `gatsby-plugin-material-ui`,
@@ -75,46 +74,46 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "assets",
-        path: `${__dirname}/static/`
-      }
+        path: `${__dirname}/static/`,
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "posts",
-        path: `${__dirname}/blog/`
-      }
+        path: `${__dirname}/blog/`,
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "about",
-        path: `${__dirname}/about/`
-      }
+        path: `${__dirname}/about/`,
+      },
     },
     {
       resolve: "gatsby-transformer-remark",
       options: {
-        plugins: remarkPlugins
-      }
+        plugins: remarkPlugins,
+      },
     },
     {
       resolve: "gatsby-plugin-mdx",
       options: {
-        gatsbyRemarkPlugins: remarkPlugins
-      }
+        gatsbyRemarkPlugins: remarkPlugins,
+      },
     },
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: config.googleAnalyticsID
-      }
+        trackingId: config.googleAnalyticsID,
+      },
     },
     {
       resolve: "gatsby-plugin-nprogress",
       options: {
-        color: config.themeColor
-      }
+        color: config.themeColor,
+      },
     },
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
@@ -124,7 +123,7 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         exclude: ["/categories/*", "/tags/*"],
-      }
+      },
     },
     {
       resolve: "gatsby-plugin-manifest",
@@ -140,15 +139,15 @@ module.exports = {
           {
             src: "/logos/logo-48.png",
             sizes: "48x48",
-            type: "image/png"
+            type: "image/png",
           },
           {
             src: "/logos/logo-1024.png",
             sizes: "512x512",
-            type: "image/png"
-          }
-        ]
-      }
+            type: "image/png",
+          },
+        ],
+      },
     },
     {
       resolve: "gatsby-plugin-feed",
@@ -179,16 +178,14 @@ module.exports = {
           {
             serialize(ctx) {
               const { rssMetadata } = ctx.query.site.siteMetadata;
-              return ctx.query.allMdx.edges.map(edge => ({
+              return ctx.query.allMdx.edges.map((edge) => ({
                 categories: edge.node.frontmatter.tags,
                 date: edge.node.fields.date,
                 title: edge.node.frontmatter.title,
                 description: edge.node.excerpt,
                 url: rssMetadata.site_url + edge.node.fields.slug,
                 guid: rssMetadata.site_url + edge.node.fields.slug,
-                custom_elements: [
-                  { "content:encoded": edge.node.html }
-                ]
+                custom_elements: [{ "content:encoded": edge.node.html }],
               }));
             },
             query: `
@@ -221,18 +218,18 @@ module.exports = {
               }
             }
           `,
-            title: 'Mr. Kannah\'s Blog',
-            output: config.siteRss
-          }
-        ]
-      }
+            title: "Mr. Kannah's Blog",
+            output: config.siteRss,
+          },
+        ],
+      },
     },
     {
-      resolve: 'gatsby-redirect-from',
+      resolve: "gatsby-redirect-from",
       options: {
-        query: 'allMdx'
-      }
+        query: "allMdx",
+      },
     },
-    'gatsby-plugin-meta-redirect' // make sure this is always the last one
-  ]
+    "gatsby-plugin-meta-redirect", // make sure this is always the last one
+  ],
 };

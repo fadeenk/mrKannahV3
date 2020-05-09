@@ -1,49 +1,49 @@
-import React, { Component } from 'react';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import axios from 'axios';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogActions from '@material-ui/core/DialogActions';
-import Button from '@material-ui/core/Button';
-import MenuItem from '@material-ui/core/MenuItem';
-import Checkbox from '@material-ui/core/Checkbox';
-import Chip from '@material-ui/core/Chip';
-import TextField from '@material-ui/core/TextField';
-import Select from '@material-ui/core/Select';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import { withStyles } from '@material-ui/core/styles';
+import React, { Component } from "react";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepLabel from "@material-ui/core/StepLabel";
+import axios from "axios";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import CardHeader from "@material-ui/core/CardHeader";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogActions from "@material-ui/core/DialogActions";
+import Button from "@material-ui/core/Button";
+import MenuItem from "@material-ui/core/MenuItem";
+import Checkbox from "@material-ui/core/Checkbox";
+import Chip from "@material-ui/core/Chip";
+import TextField from "@material-ui/core/TextField";
+import Select from "@material-ui/core/Select";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+import { withStyles } from "@material-ui/core/styles";
 import config from "../../../data/SiteConfig";
 
 const styles = () => ({
   activeButton: {
     backgroundColor: config.secondary.main,
-    '&:hover': {
+    "&:hover": {
       backgroundColor: config.secondary.dark,
     },
-    color: 'white',
+    color: "white",
   },
   topicCheckboxRoot: {
     color: config.secondary.main,
-    '&$checked': {
+    "&$checked": {
       color: config.secondary.light,
     },
   },
 });
 
 const topics = [
-  'I\'d like to work with you',
-  'I have some feedback',
-  'I\'m looking for some advice',
-  'I\'d just like to chat',
-  'Other',
+  "I'd like to work with you",
+  "I have some feedback",
+  "I'm looking for some advice",
+  "I'd just like to chat",
+  "Other",
 ];
 
 const formSteps = 4;
@@ -53,10 +53,10 @@ class Form extends Component {
   state = {
     step: 0,
     formData: {
-      name: '',
-      email: '',
+      name: "",
+      email: "",
       topics: [],
-      message: '',
+      message: "",
       errors: [],
     },
     submitting: false,
@@ -78,7 +78,7 @@ class Form extends Component {
     const { formData, step } = this.state;
     if (formData.errors[step]) {
       formData.errors[step] = null;
-      this.setState({formData});
+      this.setState({ formData });
     }
     return true;
   }
@@ -105,8 +105,9 @@ class Form extends Component {
     }
     // check field has data and is not being submitted empty
     if (field !== null && field.length === 0) {
-      formData.errors[step] = step === 3 ? 'Must select at least one topic' : 'Field is required';
-      this.setState({formData});
+      formData.errors[step] =
+        step === 3 ? "Must select at least one topic" : "Field is required";
+      this.setState({ formData });
       return false;
     }
     // if the field is teh email field check the email format
@@ -114,8 +115,8 @@ class Form extends Component {
       // eslint-disable-next-line no-useless-escape
       const emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
       if (field !== null && !field.match(emailFormat)) {
-        formData.errors[step] = 'Must be a valid email';
-        this.setState({formData});
+        formData.errors[step] = "Must be a valid email";
+        this.setState({ formData });
         return false;
       }
     }
@@ -126,7 +127,7 @@ class Form extends Component {
   handleChange(event) {
     const { formData } = this.state;
     formData[event.target.name] = event.target.value;
-    this.setState({formData}, () => this.isValid());
+    this.setState({ formData }, () => this.isValid());
   }
 
   nextStep() {
@@ -148,60 +149,76 @@ class Form extends Component {
   }
 
   handleSubmit() {
-    this.setState({ submitting: false, submitted: false});
+    this.setState({ submitting: false, submitted: false });
     if (this.state.step < formSteps) {
       this.nextStep();
     } else if (this.isValid()) {
       const self = this;
-      const {formData} = this.state;
+      const { formData } = this.state;
       this.setState({ submitting: true }, () => {
-        const url = 'https://8rwjvhixyb.execute-api.us-west-2.amazonaws.com/development/sendMail';
-        const myEmail = 'fadeekannah@gmail.com';
+        const url =
+          "https://8rwjvhixyb.execute-api.us-west-2.amazonaws.com/development/sendMail";
+        const myEmail = "fadeekannah@gmail.com";
         axios({
-          method: 'post',
+          method: "post",
           url,
           data: {
             to: [myEmail],
             from: myEmail,
             body: `New message from ${formData.name}, \n${formData.message}\n`,
             replyTo: formData.email,
-            subject: formData.topics.join(', '),
+            subject: formData.topics.join(", "),
           },
           headers: {
-            Accept: 'application/json'
-          }
-        }).then(function (response) {
-          if (response.status === 200 && response.data && response.data.body && response.data.body.success) {
-            self.setState({ submitting: false, submitted: true, step: ThankYouStep})
-          } else {
-            throw response;
-          }
-        }).catch(function (error) {
-          console.log(error);
-          Sentry.captureException(error, { submittionData: self.formData});
-          self.setState({ submitting: false, submitted: true})
-        });
+            Accept: "application/json",
+          },
+        })
+          .then(function (response) {
+            if (
+              response.status === 200 &&
+              response.data &&
+              response.data.body &&
+              response.data.body.success
+            ) {
+              self.setState({
+                submitting: false,
+                submitted: true,
+                step: ThankYouStep,
+              });
+            } else {
+              throw response;
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+            Sentry.captureException(error, { submittionData: self.formData });
+            self.setState({ submitting: false, submitted: true });
+          });
       });
     }
   }
 
   handleClose() {
-    this.setState({ submitting: false, submitted: false});
+    this.setState({ submitting: false, submitted: false });
   }
 
   menuItems(values) {
     return topics.map((topic) => (
       <MenuItem key={topic} value={topic}>
-        <Checkbox checked={values && values.indexOf(topic) > -1} color='default' classes={{
-          root: this.props.classes.topicCheckboxRoot,
-        }}/>
+        <Checkbox
+          checked={values && values.indexOf(topic) > -1}
+          color="default"
+          classes={{
+            root: this.props.classes.topicCheckboxRoot,
+          }}
+        />
         {topic}
       </MenuItem>
     ));
   }
 
   renderStep() {
-    const { step, formData} = this.state;
+    const { step, formData } = this.state;
     let content = null;
     // defaults to welcome message
     switch (step) {
@@ -209,18 +226,20 @@ class Form extends Component {
         content = (
           <Card>
             <CardContent>
-              What's your name, stranger?<br />
+              What's your name, stranger?
+              <br />
               Mine's Fadee. Let's not be strangers for much longer.
             </CardContent>
-            <TextField autoFocus
-                       label="Your Name"
-                       onChange={this.handleChange}
-                       style={{textAlign: 'left', width: '90%', marginBottom: '10px'}}
-                       value={formData.name}
-                       required={true}
-                       error={Boolean(formData.errors[step])}
-                       helperText={formData.errors[step]}
-                       name="name"
+            <TextField
+              autoFocus
+              label="Your Name"
+              onChange={this.handleChange}
+              style={{ textAlign: "left", width: "90%", marginBottom: "10px" }}
+              value={formData.name}
+              required={true}
+              error={Boolean(formData.errors[step])}
+              helperText={formData.errors[step]}
+              name="name"
             />
           </Card>
         );
@@ -230,12 +249,18 @@ class Form extends Component {
           <Card>
             <CardContent>
               What's the best email address for you, {formData.name}?<br />
-              I'll use this to get back to you. No spam or unexpected newsletters here.
+              I'll use this to get back to you. No spam or unexpected
+              newsletters here.
             </CardContent>
             <TextField
               label="Your Email"
               onChange={this.handleChange}
-              style={{textAlign: 'left', width: '90%', marginBottom: '10px', height: 'auto'}}
+              style={{
+                textAlign: "left",
+                width: "90%",
+                marginBottom: "10px",
+                height: "auto",
+              }}
               name="email"
               value={formData.email}
               required={true}
@@ -249,11 +274,14 @@ class Form extends Component {
         content = (
           <Card>
             <CardContent>
-              What's your message about?<br />
-              Think of this as like the subject field in an email. But already filled in for you.
+              What's your message about?
+              <br />
+              Think of this as like the subject field in an email. But already
+              filled in for you.
             </CardContent>
-            <FormControl error={Boolean(formData.errors[step])}
-                         style={{textAlign: 'left', width: '90%', marginBottom: '10px'}}
+            <FormControl
+              error={Boolean(formData.errors[step])}
+              style={{ textAlign: "left", width: "90%", marginBottom: "10px" }}
             >
               <InputLabel htmlFor="topics">Select your Topic</InputLabel>
               <Select
@@ -261,9 +289,15 @@ class Form extends Component {
                 onChange={this.handleChange}
                 name="topics"
                 value={formData.topics}
-                renderValue={selected => (
-                  <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                    {selected.map(value => <Chip key={value} label={value} style={{margin: '4px'}}/>)}
+                renderValue={(selected) => (
+                  <div style={{ display: "flex", flexWrap: "wrap" }}>
+                    {selected.map((value) => (
+                      <Chip
+                        key={value}
+                        label={value}
+                        style={{ margin: "4px" }}
+                      />
+                    ))}
                   </div>
                 )}
                 input={<Input id="topics" />}
@@ -279,8 +313,9 @@ class Form extends Component {
         content = (
           <Card>
             <CardContent>
-              What's your message?<br />
-              I prefer messages that are to the point. We're both busy people, and it's the best use of our time.
+              What's your message?
+              <br />I prefer messages that are to the point. We're both busy
+              people, and it's the best use of our time.
             </CardContent>
             <TextField
               multiline={true}
@@ -288,7 +323,7 @@ class Form extends Component {
               rowsMax={window.innerWidth < 600 ? 10 : 25}
               label="Your Message"
               onChange={this.handleChange}
-              style={{textAlign: 'left', width: '90%', marginBottom: '10px'}}
+              style={{ textAlign: "left", width: "90%", marginBottom: "10px" }}
               name="message"
               value={formData.message}
               required={true}
@@ -304,17 +339,21 @@ class Form extends Component {
             <CardHeader title="Thank You" />
             <hr />
             <CardContent>
-              Thank you for reaching out and contacting me. I will contact you as soon as possible.
+              Thank you for reaching out and contacting me. I will contact you
+              as soon as possible.
             </CardContent>
           </Card>
         );
         break;
       default:
         content = (
-          <div style={{marginBottom: '10px'}}>
+          <div style={{ marginBottom: "10px" }}>
             <Card>
               <CardContent>
-                I think you'll agree, there's nothing better than a message from a complete stranger. It's an opportunity to get to know someone and make a new friend.<br />
+                I think you'll agree, there's nothing better than a message from
+                a complete stranger. It's an opportunity to get to know someone
+                and make a new friend.
+                <br />
                 If you're interested in me and what I do, get in touch.
               </CardContent>
             </Card>
@@ -326,9 +365,10 @@ class Form extends Component {
       content = (
         <div id={`step${step}`}>
           {content}
-          <Stepper activeStep={step-1}
-                   orientation={window.innerWidth < 600 ? 'vertical' : 'horizontal'}
-                   style={{background: 'none'}}
+          <Stepper
+            activeStep={step - 1}
+            orientation={window.innerWidth < 600 ? "vertical" : "horizontal"}
+            style={{ background: "none" }}
           >
             <Step>
               <StepLabel>Introduce yourself</StepLabel>
@@ -343,33 +383,37 @@ class Form extends Component {
               <StepLabel>Write your message</StepLabel>
             </Step>
           </Stepper>
-
         </div>
-      )
+      );
     }
     return content;
   }
 
   renderPrevButton() {
-    const {step, submitted} = this.state;
-    if(step !== 0 && !submitted) {
-      return (<Button variant="contained"
-                      onClick={this.prevStep}
-                      style={{ marginRight: '16px' }}
-                      disabled={step === 1}
-      >previous</Button>)
+    const { step, submitted } = this.state;
+    if (step !== 0 && !submitted) {
+      return (
+        <Button
+          variant="contained"
+          onClick={this.prevStep}
+          style={{ marginRight: "16px" }}
+          disabled={step === 1}
+        >
+          previous
+        </Button>
+      );
     }
   }
 
   render() {
-    const {step, submitted, submitting} = this.state;
+    const { step, submitted, submitting } = this.state;
     const styles = {
-      width: '90%',
-      fontSize: '1em',
-      margin: '0 auto',
-      padding: '1em 0',
-      lineHeight: '1.5em',
-      maxWidth: '800px',
+      width: "90%",
+      fontSize: "1em",
+      margin: "0 auto",
+      padding: "1em 0",
+      lineHeight: "1.5em",
+      maxWidth: "800px",
     };
     return (
       <div style={styles}>
@@ -378,14 +422,14 @@ class Form extends Component {
         <Button
           variant="contained"
           onClick={step < formSteps ? this.nextStep : this.handleSubmit}
-          style={{display: submitted ? 'none' : 'inline-block'}}
-          classes={{contained: this.props.classes.activeButton}}
+          style={{ display: submitted ? "none" : "inline-block" }}
+          classes={{ contained: this.props.classes.activeButton }}
           disabled={submitting}
-        >{
-          (submitting && 'Submitting...') ||
-          (step === 0 && 'Shoot me a message') ||
-          (step < formSteps ? 'Next' : 'Submit')
-        }</Button>
+        >
+          {(submitting && "Submitting...") ||
+            (step === 0 && "Shoot me a message") ||
+            (step < formSteps ? "Next" : "Submit")}
+        </Button>
         <Dialog
           open={submitted && step !== ThankYouStep}
           onExit={this.handleClose}

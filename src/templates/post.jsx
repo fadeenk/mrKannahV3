@@ -1,10 +1,10 @@
 import React from "react";
-import Helmet from "react-helmet";
+import { Helmet } from "react-helmet";
 import { graphql } from "gatsby";
 import urljoin from "url-join";
-import { MDXRenderer } from "gatsby-plugin-mdx"
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 import Layout from "../layout";
 import Disqus from "../components/Disqus/Disqus";
 import PostTags from "../components/PostTags/PostTags";
@@ -33,13 +33,24 @@ export default class PostTemplate extends React.Component {
           <Helmet>
             <title>{`${post.title} | ${config.siteTitle}`}</title>
           </Helmet>
-          <SEO url={slug} postSEO={postNode}  />
-          <NavBar style={{background: config.secondary.dark}} location={{pathname: '/blog/'}} />
-          <div style={{ textAlign: 'left', backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light} 40%, ${config.primary.light} 60%, ${config.secondary.dark})`, padding: '1em 0' }}>
-            <Card style={{width: '90%', margin: '10px auto', maxWidth: '800px'}}>
+          <SEO url={slug} postSEO={postNode} />
+          <NavBar
+            style={{ background: config.secondary.dark }}
+            location={{ pathname: "/blog/" }}
+          />
+          <div
+            style={{
+              textAlign: "left",
+              backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light} 40%, ${config.primary.light} 60%, ${config.secondary.dark})`,
+              padding: "1em 0",
+            }}
+          >
+            <Card
+              style={{ width: "90%", margin: "10px auto", maxWidth: "800px" }}
+            >
               <CardContent>
                 <h1>{post.title}</h1>
-                <div style={{marginLeft: '5px'}}>
+                <div style={{ marginLeft: "5px" }}>
                   <MDXRenderer>{postNode.body}</MDXRenderer>
                 </div>
                 <PostTags tags={post.tags} />

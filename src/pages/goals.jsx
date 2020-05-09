@@ -1,23 +1,23 @@
 import React from "react";
-import Layout from "../layout";
-import SEO from "../components/SEO/SEO";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import NavBar from "../components/navBar";
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import SEO from "../components/SEO/SEO";
+import Layout from "../layout";
 import Footer from "../components/Footer";
 import config from "../../data/SiteConfig";
-import goals from '../../data/goals';
+import goals from "../../data/goals";
 
 const styles = {
-  width: '90%',
-  margin: '0 auto',
-  maxWidth: '800px',
+  width: "90%",
+  margin: "0 auto",
+  maxWidth: "800px",
 };
 
 function processGoals(goalsArray) {
-  return goalsArray.map(goal => {
+  return goalsArray.map((goal) => {
     return (
       <ExpansionPanel>
         <ExpansionPanelSummary
@@ -29,8 +29,8 @@ function processGoals(goalsArray) {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>{goal.description}</ExpansionPanelDetails>
       </ExpansionPanel>
-    )
-  })
+    );
+  });
 }
 
 class GoalsPage extends React.Component {
@@ -41,9 +41,18 @@ class GoalsPage extends React.Component {
     };
     return (
       <Layout>
-        <SEO url={this.props.location.href} pageSEO={pageSEO}/>
-        <NavBar style={{background: config.secondary.dark}} location={this.props.location} />
-        <div style={{ textAlign: 'center', backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light} 40%, ${config.primary.light} 60%, ${config.secondary.dark})`, padding: '1em 0' }}>
+        <SEO url={this.props.location.href} pageSEO={pageSEO} />
+        <NavBar
+          style={{ background: config.secondary.dark }}
+          location={this.props.location}
+        />
+        <div
+          style={{
+            textAlign: "center",
+            backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light} 40%, ${config.primary.light} 60%, ${config.secondary.dark})`,
+            padding: "1em 0",
+          }}
+        >
           {Object.keys(goals).map((category) => (
             <div style={styles}>
               <h2>{category}</h2>
@@ -53,8 +62,8 @@ class GoalsPage extends React.Component {
         </div>
         <Footer />
       </Layout>
-    )
+    );
   }
-};
+}
 
 export default GoalsPage;

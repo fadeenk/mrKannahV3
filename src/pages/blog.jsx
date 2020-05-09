@@ -16,10 +16,19 @@ class Index extends React.Component {
     };
     return (
       <Layout>
-        <SEO url={this.props.location.href} pageSEO={pageSEO}/>
-        <NavBar style={{background: config.secondary.dark}} location={this.props.location} />
-        <div style={{ textAlign: 'left', backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light} 40%, ${config.primary.light} 60%, ${config.secondary.dark})`, padding: '1em 0' }}>
-          <h1 style={{textAlign: 'center', color: 'white'}}>Blog</h1>
+        <SEO url={this.props.location.href} pageSEO={pageSEO} />
+        <NavBar
+          style={{ background: config.secondary.dark }}
+          location={this.props.location}
+        />
+        <div
+          style={{
+            textAlign: "left",
+            backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light} 40%, ${config.primary.light} 60%, ${config.secondary.dark})`,
+            padding: "1em 0",
+          }}
+        >
+          <h1 style={{ textAlign: "center", color: "white" }}>Blog</h1>
           <PostListing postEdges={postEdges} />
         </div>
         <Footer />
@@ -36,7 +45,7 @@ export const pageQuery = graphql`
     allMdx(
       limit: 2000
       sort: { fields: [fields___date], order: DESC }
-      filter: { fileAbsolutePath: {regex:"/blog/"} }
+      filter: { fileAbsolutePath: { regex: "/blog/" } }
     ) {
       edges {
         node {

@@ -4,7 +4,8 @@ const config = {
   siteLogo: "/static/logos/logo-1024.png", // Logo used for SEO and manifest.
   siteUrl: "https://mrkannah.com", // Domain of your website without pathPrefix.
   pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
-  siteDescription: "Fadee Kannah's portfolio site. Includes everything you need to know about me.", // Website description used for RSS feeds/meta description tag.
+  siteDescription:
+    "Fadee Kannah's portfolio site. Includes everything you need to know about me.", // Website description used for RSS feeds/meta description tag.
   siteRss: "/rss.xml", // Path to the RSS file.
   googleAnalyticsID: "UA-28181698-1", // GA tracking ID.
   disqusShortname: "mrkannah", // Disqus shortname.
@@ -17,13 +18,13 @@ const config = {
   primary: {
     light: "#63d7cb",
     main: "#25a59a",
-    dark: "#00756c"
+    dark: "#00756c",
   },
   secondary: {
     light: "#718792",
     main: "#455a64",
-    dark: "#1c313a"
-  }
+    dark: "#1c313a",
+  },
 };
 
 // Validate

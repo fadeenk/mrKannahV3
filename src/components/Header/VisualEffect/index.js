@@ -1,33 +1,32 @@
-import React from 'react';
-import Particles from 'react-particles-js';
-import config from './config';
+import React from "react";
+import Particles from "react-particles-js";
+import config from "./config";
 import siteConfig from "../../../../data/SiteConfig";
-
 
 class ParticlesBackground extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      initialRender: true
+      initialRender: true,
     };
   }
 
   componentDidMount() {
     this.handleResize();
-      this.setState({initialRender: false});
-      window.addEventListener('resize', this.handleResize, false);
+    this.setState({ initialRender: false });
+    window.addEventListener("resize", this.handleResize, false);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize, false);
+    window.removeEventListener("resize", this.handleResize, false);
   }
 
   handleResize = (e) => {
     const width = e ? e.target.innerWidth : window.innerWidth;
     if (width < 600) {
-      this.setState({height: 200})
+      this.setState({ height: 200 });
     } else {
-      this.setState({height: 350})
+      this.setState({ height: 350 });
     }
   };
 
@@ -37,14 +36,15 @@ class ParticlesBackground extends React.Component {
     config.particles.number.value = 100;
     if (!this.state.initialRender) {
       return (
-        <Particles style={this.props.style} height={`${this.state.height}px`} params={config} />
-      )
+        <Particles
+          style={this.props.style}
+          height={`${this.state.height}px`}
+          params={config}
+        />
+      );
     }
-    return (
-      <div className='header' style={{width: '100%'}}></div>
-    )
+    return <div className="header" style={{ width: "100%" }}></div>;
   }
-
 }
 
 export default ParticlesBackground;

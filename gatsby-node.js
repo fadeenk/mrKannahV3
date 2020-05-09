@@ -1,4 +1,4 @@
-const urljoin = require( "url-join");
+const urljoin = require("url-join");
 const path = require("path");
 const _ = require("lodash");
 const moment = require("moment");
@@ -28,22 +28,22 @@ function addSiblingNodes(createNodeField) {
     createNodeField({
       node: currNode,
       name: "nextTitle",
-      value: nextNode.frontmatter.title
+      value: nextNode.frontmatter.title,
     });
     createNodeField({
       node: currNode,
       name: "nextSlug",
-      value: nextNode.fields.slug
+      value: nextNode.fields.slug,
     });
     createNodeField({
       node: currNode,
       name: "prevTitle",
-      value: prevNode.frontmatter.title
+      value: prevNode.frontmatter.title,
     });
     createNodeField({
       node: currNode,
       name: "prevSlug",
-      value: prevNode.fields.slug
+      value: prevNode.fields.slug,
     });
   }
 }
@@ -78,11 +78,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         createNodeField({
           node,
           name: "date",
-          value: date.toISOString()
+          value: date.toISOString(),
         });
       }
     }
-    if (node.fileAbsolutePath.includes('/blog/')) {
+    if (node.fileAbsolutePath.includes("/blog/")) {
       slug = `/blog${slug}`;
     }
     createNodeField({ node, name: "slug", value: slug });
@@ -109,9 +109,7 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
           {
-            allMdx (
-              filter: { fileAbsolutePath: {regex:"/blog/"} }
-            ) {
+            allMdx(filter: { fileAbsolutePath: { regex: "/blog/" } }) {
               edges {
                 node {
                   frontmatter {
@@ -126,7 +124,7 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         `
-      ).then(result => {
+      ).then((result) => {
         if (result.errors) {
           /* eslint no-console: "off" */
           console.log(result.errors);
@@ -135,9 +133,9 @@ exports.createPages = ({ graphql, actions }) => {
 
         const tagSet = new Set();
         const categorySet = new Set();
-        result.data.allMdx.edges.forEach(edge => {
+        result.data.allMdx.edges.forEach((edge) => {
           if (edge.node.frontmatter.tags) {
-            edge.node.frontmatter.tags.forEach(tag => {
+            edge.node.frontmatter.tags.forEach((tag) => {
               tagSet.add(tag);
             });
           }
@@ -150,76 +148,75 @@ exports.createPages = ({ graphql, actions }) => {
             path: edge.node.fields.slug,
             component: postPage,
             context: {
-              slug: edge.node.fields.slug
-            }
+              slug: edge.node.fields.slug,
+            },
           });
         });
 
         const tagList = Array.from(tagSet);
-        tagList.forEach(tag => {
+        tagList.forEach((tag) => {
           createPage({
             path: `/tags/${_.kebabCase(tag)}/`,
             component: tagPage,
             context: {
-              tag
-            }
+              tag,
+            },
           });
         });
 
         const categoryList = Array.from(categorySet);
-        categoryList.forEach(category => {
+        categoryList.forEach((category) => {
           createPage({
             path: `/categories/${_.kebabCase(category)}/`,
             component: categoryPage,
             context: {
-              category
-            }
+              category,
+            },
           });
         });
       })
     );
-  }).then(() => graphql(
-    `
-      {
-        allMarkdownRemark (
-          filter: { fileAbsolutePath: {regex:"/about/"} }
-          sort: {
-            fields: [frontmatter___route]
-            order: ASC
-          }
-        ) {
-          edges {
-            node {
-              frontmatter {
-                route
-                title
-                description
+  }).then(() =>
+    graphql(
+      `
+        {
+          allMarkdownRemark(
+            filter: { fileAbsolutePath: { regex: "/about/" } }
+            sort: { fields: [frontmatter___route], order: ASC }
+          ) {
+            edges {
+              node {
+                frontmatter {
+                  route
+                  title
+                  description
+                }
               }
             }
           }
         }
+      `
+    ).then((result) => {
+      if (result.errors) {
+        console.log(result.errors);
+        throw result.errors;
       }
-    `
-  ).then((result) => {
-    if (result.errors) {
-      console.log(result.errors);
-      throw result.errors;
-    }
-    const aboutPage = path.resolve("src/templates/about.jsx");
-    const pages = result.data.allMarkdownRemark.edges.map(edge => ({
-      route: edge.node.frontmatter.route,
-      title: edge.node.frontmatter.title,
-      description: edge.node.frontmatter.description,
-    }));
-    pages.forEach((page) => {
-      createPage({
-        path: page.route,
-        component: aboutPage,
-        context: {
-          route: page.route,
-          pages,
-        }
+      const aboutPage = path.resolve("src/templates/about.jsx");
+      const pages = result.data.allMarkdownRemark.edges.map((edge) => ({
+        route: edge.node.frontmatter.route,
+        title: edge.node.frontmatter.title,
+        description: edge.node.frontmatter.description,
+      }));
+      pages.forEach((page) => {
+        createPage({
+          path: page.route,
+          component: aboutPage,
+          context: {
+            route: page.route,
+            pages,
+          },
+        });
       });
     })
-  }));
+  );
 };
