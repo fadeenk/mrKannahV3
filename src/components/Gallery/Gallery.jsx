@@ -4,6 +4,7 @@ import Carousel, { Modal, ModalGateway } from "react-images";
 
 class myGallery extends Component {
   state = {
+    images: [],
     currentImage: 0,
     viewerIsOpen: false,
   };
@@ -17,18 +18,41 @@ class myGallery extends Component {
     this.setState({ currentImage: 0, viewerIsOpen: false });
   };
 
-  render() {
+  componentDidMount() {
     const { photos } = this.props;
-    const { viewerIsOpen, currentImage } = this.state;
+    console.log(photos);
+    Promise.all(
+      photos.map((obj) => {
+        const src = typeof obj === "string" ? obj : obj.src;
+        let img = new Image();
+        img.src = src;
+        return new Promise(resolve => {
+          img.onload = () => {
+            resolve({
+              src: img.src,
+              height: img.height,
+              width: img.width
+            });
+          }
+        })
+      })
+    ).then((images) => {
+      this.setState({images});
+    });
+  }
+
+  render() {
+    const {images, viewerIsOpen, currentImage } = this.state;
     return (
       <div>
-        <Gallery photos={photos} onClick={this.openLightbox} />
+        <Gallery photos={images} onClick={this.openLightbox} />
         <ModalGateway>
           {viewerIsOpen ? (
             <Modal onClose={this.closeLightbox}>
+              {/*TODO fix carousel cutting the image*/}
               <Carousel
                 currentIndex={currentImage}
-                views={photos.map((x) => ({
+                views={images.map((x) => ({
                   ...x,
                   srcset: x.srcSet,
                   caption: x.caption,
