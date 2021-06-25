@@ -24,11 +24,15 @@ class myGallery extends Component {
     Promise.all(
       photos.map((obj) => {
         const src = typeof obj === "string" ? obj : obj.src;
+        if (obj.width && obj.height) {
+          return obj;
+        }
         let img = new Image();
         img.src = src;
         return new Promise(resolve => {
           img.onload = () => {
             resolve({
+              ...obj,
               src: img.src,
               height: img.height,
               width: img.width
