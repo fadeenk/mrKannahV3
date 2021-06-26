@@ -20,7 +20,6 @@ class myGallery extends Component {
 
   componentDidMount() {
     const { photos } = this.props;
-    console.log(photos);
     Promise.all(
       photos.map((obj) => {
         const src = typeof obj === "string" ? obj : obj.src;
@@ -31,12 +30,12 @@ class myGallery extends Component {
         img.src = src;
         return new Promise(resolve => {
           img.onload = () => {
-            resolve({
-              ...obj,
+          const res = {
               src: img.src,
               height: img.height,
               width: img.width
-            });
+          };
+          typeof obj === "string" ? resolve(res): resolve({...obj, ...res});
           }
         })
       })
