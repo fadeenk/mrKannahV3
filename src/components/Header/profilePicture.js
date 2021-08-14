@@ -25,6 +25,7 @@ class ProfilePicture extends Component {
           verticalAlign: "middle",
           position: "relative",
           padding: "10px",
+            ...this.props.style,
         }}
       >
         <Paper
