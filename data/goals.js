@@ -1,3 +1,11 @@
+function getUrl(year, id ) {
+  if (year < 2018) return null;
+  const baseUrl = (year > 2019 ? '/blog/yearly-recap-' : '/blog/year-review-') + year;
+  if (year === 2018) return baseUrl;
+  id = id || 'major-life-goals';
+  return `${baseUrl}#${id}`;
+}
+
 const TYPES = {
   Family: "family",
   Work: "Work",
@@ -8,10 +16,11 @@ const TYPES = {
 };
 const goals = {};
 class Goal {
-  constructor(type, goal, description = "", completed = null) {
+  constructor(type, goal, description = "", completed = null, id= null) {
     this.goal = goal;
     this.description = description;
     this.completed = completed;
+    this.url = getUrl(completed, id);
     if (!goals[type]) goals[type] = [];
     goals[type].push(this);
   }
@@ -35,7 +44,8 @@ new Goal(
     TYPES.Personal,
     "Get mentioned in a major news outlet",
     '<p>Got mentioned in <a href="https://techcrunch.com/2021/03/03/after-200-arr-growth-in-2020-coursekey-raises-9m-to-digitize-trade-schools/"> TechCrunch</a></p>',
-    2021
+    2021,
+    'get-mentioned-in-a-major-news-outlet',
 );
 
 new Goal(
@@ -49,7 +59,8 @@ new Goal(
   TYPES.Personal,
   "Have a financial roadmap",
   "Have a better understanding of where I stand financially. Have a map to get out of dept. Have assets evaluated and documented. Have budget plan.",
-  2021
+  2021,
+  'develop-a-financial-roadmap',
 );
 
 new Goal(
@@ -70,7 +81,7 @@ new Goal(
   2018
 );
 new Goal(TYPES.Work, "Become venture backed business", "CourseKey", 2018);
-new Goal(TYPES.Work, "Have multiple incomes", "<ul><li>CourseKey Salary</li><li>Rental income</li></ul>", 2021);
+new Goal(TYPES.Work, "Have multiple incomes", "<ul><li>CourseKey Salary</li><li>Rental income</li></ul>", 2021, 'have-multiple-streams-of-income');
 new Goal(TYPES.Personal, "Create things", "Mostly different software", 2018);
 new Goal(
   TYPES.Possessions,
@@ -84,7 +95,8 @@ new Goal(
   TYPES.Possessions,
   "Buy a second house",
   "source of income or vacation place",
-  2021
+  2021,
+  'buy-a-second-house'
 );
 new Goal(TYPES.Travel, "Live in three countries", "Iraq, Turkey and USA", 2008);
 new Goal(TYPES.Travel, "Visit Japan");
@@ -103,7 +115,7 @@ new Goal(
   TYPES.Family,
   "Ensure family is financially set if anything happens to me"
 );
-new Goal(TYPES.Work, "Become an investor and help small businesses", '', 2021);
+new Goal(TYPES.Work, "Become an investor and help small businesses", '', 2021, 'become-a-startups-investor');
 new Goal(TYPES.Possessions, "Buy a Predator Thronos");
 new Goal(TYPES.Personal, "Solve big complex problems to make the world better");
 new Goal(TYPES.Charity, "Help my extended family that is in need");

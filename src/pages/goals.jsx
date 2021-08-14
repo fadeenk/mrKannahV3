@@ -18,8 +18,6 @@ const styles = {
 
 function processGoals(goalsArray) {
   return goalsArray.map((goal) => {
-    const baseUrl = goal.completed < 2018 ? null : goal.completed > 2019 ? '/blog/yearly-recap-' : '/blog/year-review-';
-    const completedUrl = goal.completed >= 2018 ? `${baseUrl}${goal.completed}#major-life-goals` : null;
     return (
       <ExpansionPanel>
         <ExpansionPanelSummary
@@ -30,10 +28,12 @@ function processGoals(goalsArray) {
           {goal.completed ? <del>{goal.goal}</del> : goal.goal}
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-            <div>
-                <div dangerouslySetInnerHTML={{ __html: goal.description }} />
-                {goal.completed ? <p>Completed in: <a href={completedUrl}>{goal.completed}</a></p> : ''}
-            </div>
+          <div>
+            <div dangerouslySetInnerHTML={{ __html: goal.description }} />
+            {goal.completed ? (
+              <p>Completed in: <a href={goal.url}>{goal.completed}</a></p>
+            ) : ''}
+          </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     );
