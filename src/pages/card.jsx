@@ -66,7 +66,7 @@ class VirtualCard extends React.Component {
                     <Button variant="contained" className={this.props.classes.button} onClick={() => {
                         download("/fadeekannah.vcf", "fadeekannah.vcf");
                     }}>
-                        <PersonAddAltIcon/>  Add to Contacts
+                        <PersonAddAltIcon style={{marginRight: '10px'}}/>Add to Contacts
                     </Button>
                     <br/>
                 </CardContent>
