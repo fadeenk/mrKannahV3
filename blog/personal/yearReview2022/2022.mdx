@@ -17,11 +17,16 @@ tags:
 import YouTube from "@components/YouTube/YouTube.jsx";
 import Gallery from "@components/Gallery/Gallery.jsx";
 import Instagram from "@components/Instagram/Instagram.jsx";
-// import hmove1 from './images/hmove1.jpg'
-// import hmove2 from './images/hmove2.jpg'
-// import hmove3 from './images/hmove3.jpg'
-// import hmove4 from './images/hmove4.jpg'
-// import hmove5 from './images/hmove5.jpg'
+import remote1 from './images/remote1.jpg'
+import remote2 from './images/remote2.jpg'
+import remote3 from './images/remote3.jpg'
+import fun221 from './images/fun1.jpg'
+import fun222 from './images/fun2.jpg'
+import fun223 from './images/fun3.jpg'
+import fun224 from './images/fun4.jpg'
+import fun225 from './images/fun5.jpg'
+import fun226 from './images/fun6.jpg'
+import fun227 from './images/fun7.jpg'
 // import hmove6 from './images/hmove6.jpg'
 // import hmove7 from './images/hmove7.jpg'
 // import hmove8 from './images/hmove8.jpg'
@@ -30,7 +35,15 @@ import Instagram from "@components/Instagram/Instagram.jsx";
 
 ## Introduction
 
-<Gallery photos={[]} />
+<Gallery photos={[
+  fun221,
+  fun222,
+  fun223,
+  fun224,
+  fun225,
+  fun226,
+  fun227,
+]} />
 
 
 ## Goals achieved this year
@@ -59,6 +72,26 @@ Since I set up my home office, I have been wanting to get a plant. It took me a 
 
 - [Learn how to care for the Pothos!](https://www.thesill.com/blogs/plants-101/how-to-care-for-golden-pothos-epipremnum-aureum) Nice summary, same information can be found in the Blossom app
 - [Do Pothos Need Fertilizer? (What Type, How Much & More)](https://simplifyplants.com/do-pothos-need-fertilizer/) Great guide about fertilizers in general!
+
+## Build a solid investment portfolio
+I learned about the [Ichimoku Cloud](https://www.investopedia.com/terms/i/ichimoku-cloud.asp) and I decided to use that method of analysis to build an investment protfolio. The reason why I started looking at more advanced technical analysis tools is because I managed to lose ~60% in individual stock picks in a market that was one of the most bullish markets. 
+
+Also instead of spending time analyzing stocks and picking them individually. I found this [awesome guy](https://www.youtube.com/watch?v=4jaBKXDqg9U) who has done all the things that I wanted and shared the [code too](https://github.com/derekbanas/Python4Finance)! I used that as the base for automating the analysis then I tweaked it some more.
+
+First, I got a list of all of the nasdaq stocks instead of just the ones that were included. After that I pulled the entire daily stock trades data of those stocks in the last three years and calculated the returns for all of them. Taking all that data and processed it even further to calculate the Ichimoku cloud data.
+
+Once I had all the data, I began filtering and building my protfolio. The first pass included focusing on top 2 preforming stocks in each sector that have had a strong positive momentum not just at the time of running the analysis but also within the last two weeks of trading and the last 100 days. Once the list was generated I had 12+ stocks to pick from which was still alot for me to research and decide on personally.
+
+I ran millions of simulations of different [Markowitz Portfolio Optimizations (Modern Portfolio Theory)](https://www.investopedia.com/terms/m/modernportfoliotheory.asp) to pick top performing portfolios that the lowest wieght of any individual stock is more or equal to 2%. Also while running the simulations I was also calculating and evaluating the [Sharpe ratio](https://www.investopedia.com/terms/s/sharperatio.asp) to help determine how much of each stock should be held in my porfolio.
+
+Once I got the best stocks and weights for my portfolio, I calculated how much I need to invest and how many shares per stock I should get to build this portfolio. Here is the final results.
+
+// TODO add image of output
+
+## Car lights upgrade
+Although I am not driving as much, I decided to give my car an upgrade. Last upgrade I did was when I replaced the entertainment system during the first COVID lockdown! One thing that I didn't like about my car was the fact that it didnt have LED lighting. So I bought and replaced all the lights in the car. I replaced the internal lights as well as the headlights.
+
+// TODO take a picture of the lights
 
 ## Reading Materials this year
 This year I have been extremely bad at keeping track of my readings! This is due to the fact that most of my reading has been articles and newsletter online. I will be looking into a way to capture my reading material in a user friendly way.
@@ -103,10 +136,28 @@ Since I have not commuted for work in a while, my podcast listening time has bee
 
 ## Month by month highlights
 ### January
+This year did not start on a good note... which seem like it is becoming a pattern. As I was still fighting COVID for the first couple weeks, I was still working. However, the work was fun work and it was full of meetings starting the new year and announcing the full year plan to the teams. We did the engineering team kickoff remotly because my team could not meet in person due to travel complications and the spread of OmiCron. Although, it was a remote kickoff it was still a great experince and got to enjoy a couple days of collaborating with the team and not worry about every day chaos and work.
+
+<Gallery photos={[
+  remote1,
+  remote2,
+  remote3,
+]} />
+
+After being qurantined for almost a month due to COVID, my family and I decided to celabrate by enjoying some nice food. We decided to do an all you can eat since this is a popular option in Las Vegas. We picked wicked spoon at the cosmopolitan, which was pretty good!
 
 ### February
+Kicked off the month by doing a 3-day Agile trainning session with the team. This was a necessary thing to do as we wanted to optimize the teams performance before getting started to work on our big project for the year. The project kicked off and things did not go as planned. We ran into many issues with our systems getting overloaded and clients misconfigring. 
+
+Since things started opening back up we started exploring more of Vegas! We went to SeaQuest, which was fun! We also explored some more casinos including [Silverton Mermaids Shows](https://silvertoncasino.com/hotel/aquarium-mermaids-shows/).
+
 
 ### March
+I booked a vocation for May! February was rough and March was not any easier. March was challening in a different way. From losing managers and me assuming thier responsibilities to letting go of the oldest engineer on my team (been working on coursekey together for more than eight years).
+
+With all the chaos, I needed a break and step away for a bit! I took a quick weekend in Austin! I got to hangout with Luke and meet up with a few awesome people who moved there. I also got to let off some steam the Texan way.
+
+<Instagram url="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDI0MDU2MTI1MzYxOTgz?story_media_id=2792051142886961982_4841022078" />
 
 ### April
 
