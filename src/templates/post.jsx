@@ -5,6 +5,7 @@ import urljoin from "url-join";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import TextField from "@material-ui/core/TextField";
 import Layout from "../layout";
 import Disqus from "../components/Disqus/Disqus";
 import PostTags from "../components/PostTags/PostTags";
@@ -17,15 +18,50 @@ import NavBar from "../components/navBar";
 import Footer from "../components/Footer";
 
 export default class PostTemplate extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      guess: ""
+    };
+  }
+
   render() {
     const { slug } = this.props.pageContext;
     const postNode = this.props.data.mdx;
+    const {guess} = this.state;
     const post = postNode.frontmatter;
     if (!post.id) {
       post.id = slug;
     }
     if (!post.category_id) {
       post.category_id = config.postDefaultCategoryID;
+    }
+    if (post.password && guess !== post.password) {
+      return ( 
+        <Layout>
+          <div style={{
+              textAlign: "left",
+              backgroundImage: `linear-gradient(${config.secondary.dark}, ${config.primary.light} 40%, ${config.primary.light} 60%, ${config.secondary.dark})`,
+              padding: "1em 0",
+            }}
+          >
+            <Card
+              style={{ width: "90%", margin: "10px auto", maxWidth: "800px" }}
+            >
+              <CardContent>
+                <TextField
+                  fullWidth 
+                  id="outlined-password-input"
+                  label="Password"
+                  type="password"
+                  autoComplete={post.slug}
+                  onChange={(e) => this.setState({guess: e.target.value})}
+                />
+              </CardContent>
+            </Card>
+          </div>
+        </Layout>       
+      )
     }
     return (
       <Layout>
@@ -78,6 +114,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         coverURL
+        password
         coverFile {
           publicURL
         }
