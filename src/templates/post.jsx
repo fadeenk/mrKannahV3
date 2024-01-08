@@ -18,10 +18,12 @@ import NavBar from "../components/navBar";
 import Footer from "../components/Footer";
 
 export default class PostTemplate extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const urlParams = new URLSearchParams(window.location.search);
+    const guessParam = urlParams.get('pass');
     this.state = {
-      guess: ""
+      guess: guessParam || ""
     };
   }
 

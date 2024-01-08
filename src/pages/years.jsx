@@ -24,7 +24,7 @@ function processYears(years) {
     >
         <CardContent>
           <div>
-            <p>{year}: <b>{years[year]}</b></p>
+            <p><a href={`/blog/yearly-recap-${year}?pass=${years[year]}`}>{year}</a>: <b>{years[year]}</b></p>
           </div>
         </CardContent>
       </Card>
