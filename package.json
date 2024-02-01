@@ -101,7 +101,7 @@
     "build:pp": "gatsby build --prefix-paths",
     "build:gh": "npm run clean && npm run build:pp && gh-pages -d public",
     "clean": "rm -rf public && rm -rf .cache",
-    "deploy": "npm run clean && gatsby build --prefix-paths && gh-pages -d public -b gh-pages -t",
+    "deploy": "npm run clean && set NODE_OPTIONS=--openssl-legacy-provider && gatsby build --prefix-paths && gh-pages -d public -b gh-pages -t",
     "lint:js": "eslint --ext .js,.jsx . --fix",
     "lint:md": "remark blog/posts/",
     "write-good": "write-good $(glob 'blog/posts/**/*.md')",

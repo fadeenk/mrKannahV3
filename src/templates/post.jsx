@@ -20,11 +20,17 @@ import Footer from "../components/Footer";
 export default class PostTemplate extends React.Component {
   constructor(props) {
     super(props);
-    const urlParams = new URLSearchParams(window.location.search);
-    const guessParam = urlParams.get('pass');
     this.state = {
-      guess: guessParam || ""
+      guess: ""
     };
+    const isBrowser = typeof window !== `undefined`;
+    if (isBrowser) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const guessParam = urlParams.get('pass');
+      this.state = {
+        guess: guessParam
+      };
+    }
   }
 
   render() {
